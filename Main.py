@@ -5,5 +5,5 @@ import Functions
 #from the files we're importing.  The goal is for more readable code.
 
 #Here's an example of how we'd call the functions/classes in the other files
-Classes.sword.debugInfo()
 
+Functions.start(Classes.Wolf1, Classes.Wolf2)
