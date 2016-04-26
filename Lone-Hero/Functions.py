@@ -8,20 +8,27 @@ from random import randint
 '''
 #The math breakdown is essentially choose a random number between
 #-attack+random attack modifier to attack + randon attack modifier
+#The function will do the math, then return an integer "damage"
 def attackCalc(object1, object2):
+    #Ensure damage is cleared to 0.
     damage = 0
     
+    #Determine attack number
     attack = (object1.attack + randint((-object1.attack + (int(.5 * object1.attack))),
                                        (object1.attack + (int(.5 * object1.attack)))))
+    #Determine defense number
     defense = (object2.defense + randint(0, (object2.defense + (int(.5 * object2.defense)))))
 
+    #Calculate the difference
     finalAttack = attack - defense
 
     #Now that we have an attack value, time to assign it to a damage value
+    #If the attack is above 0, that is our damage value
     if finalAttack > 0:
         damage = finalAttack
         print (str(object1.name) + " did " + str(damage) + " damage!")
         return damage
+    #If it is below zero, we need it to be 0, otherwise we'd be healing on the opponent.
     else:
         print (str(object1.name) + " missed their attack!")
         return damage
