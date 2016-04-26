@@ -57,10 +57,11 @@ class spell:
 #These will be the effects for the spell class listed above.  It will need
 #to know the stat that it needs to modify.  Ex.  Blind will affect attack with -2
 class effect:
-    def __init__(self, name, stat, mod):
+    def __init__(self, name, stat, mod, duration):
         self.name = name
         self.stat = stat
         self.mod = mod
+        self.duration = duration
 
     def debugInfo(self):
         print ("Name is " + self.name)
@@ -118,13 +119,14 @@ axe = weapon("Axe",3,0, "A masterfully designed weapon, complete with a " +
 
 #These are 3 spells I've made.  Again, feel free to add some.
 #1 is pure damage, the other 2 are status effect spells
-lightning_bolt = spell("Lightning Bolt",5,"", "Generic Lightning Bolt description - 'Zap'")
+lightning_bolt = spell("Lightning Bolt",30,"", "Generic Lightning Bolt description - 'Zap'")
 blind = spell("Blind",0,"atkDown", "Sometimes a best defense is crippling your opponents offense.")
 shatter = spell("Shatter",0,"defDown", "Armor and shields are useless when they're in pieces.")
 regen = spell("Regenerate",0,"mend", "Slowly mend your wounds over time.")
 
 #These define the status effects.  Simple, one affects attack, one affects defense.
 #Eventually, when we have the entity class, we'll change "attack" and "defense" to entity.attack and entity.defense
-atkDown = effect("atkDown", "attack", -5)
-defDown = effect("defDown", "defense", -5)
-mend = effect("mend", "HP", +5)
+atkdown = effect("atkDown", "attack", -5,4)
+defDown = effect("defDown", "defense", -5,4)
+mend = effect("mend", "currentHP", +5,6)
+
