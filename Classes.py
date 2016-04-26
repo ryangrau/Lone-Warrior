@@ -125,6 +125,6 @@ regen = spell("Regenerate",0,"mend", "Slowly mend your wounds over time.")
 
 #These define the status effects.  Simple, one affects attack, one affects defense.
 #Eventually, when we have the entity class, we'll change "attack" and "defense" to entity.attack and entity.defense
-atkdown = effect("atkDown", "attack", -5)
+atkDown = effect("atkDown", "attack", -5)
 defDown = effect("defDown", "defense", -5)
 mend = effect("mend", "HP", +5)
