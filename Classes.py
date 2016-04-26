@@ -1,6 +1,24 @@
 '''
 ***Class Definitions***
 '''
+#Class for Creatures in the game.
+class Entity:
+        name = ""
+        HP = int
+        Attack = int
+        Defence = int
+        RandInt = 7
+        
+        def printClass( self ):
+            print(self.name)
+            print(self.HP)
+            print(self.Attack)
+            print(self.Defence)
+            print(self.RandInt)
+            return
+        
+
+
 
 #Class for weapons, just to add a small bit of customimation,
 #Just keeping it simple for now, with only name, attack, and defense values
@@ -59,6 +77,32 @@ we can do this for a "Sword, with and attack of +3 and defense of +1"
 '''
 ***Object Creation***
 '''
+
+
+Wolf1 = Entity()
+Wolf1.name = "Kujo"
+Wolf1.HP = 60
+Wolf1.Attack = 15
+Wolf1.Defence = 2
+
+Wolf2 = Entity()
+Wolf2.name = "Fluffy"
+Wolf2.HP = 80
+Wolf2.Attack = 10
+Wolf2.Defence = 1
+
+Hero = Entity()
+Hero.name = "Ryan"
+#Will get hero name in game like this: Hero.name = raw_input("What is your name lone explorer?")
+Hero.HP = 150
+Hero.Attack = 12
+Hero.Defence = 3
+
+Boss = Entity()
+Boss.name = "Bob"
+Boss.HP = 170
+Boss.Attack = 10
+Boss.Defence = 6
 
 #These are the 3 generic weapons I've made.  Feel free to add some.
 #It uses the "weapon" class

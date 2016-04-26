@@ -25,5 +25,31 @@ def attackCalc(object1, object2):
     else:
         print (str(object1.name) + " missed their attack!")
         return damage
-    
+
+#Object1 attacks Object2    
+def battle1(object1, object2):
+    print("Now it's " + object1.name +"'s turn!")
+    object2.HP = object2.HP - (object1.Attack - object2.Defence)
+    print(object1.name + " attacked " + object2.name + " for " + str(object1.Attack - object2.Defence) + " of damage!\n")
+    if object2.HP <= 0 :
+        print (object2.name + " has died...You goddamn murderer!!!")
+    else:
+        print(object2.name + " has " + str(object2.HP) + " HP left!")
+
+#Object2 attacks Object1
+def battle2(object1, object2):
+    print("Now it's " + object2.name +"'s turn!")
+    object1.HP = object1.HP - (object2.Attack - object1.Defence)
+    print(object2.name + " attacked " + object1.name + " for " + str(object2.Attack - object1.Defence) + " of damage!\n")
+    if object1.HP <= 0 :
+        print (object1.name + " has died...You goddamn murderer!!!")
+    else:
+        print(object1.name + " has " + str(object1.HP) + " HP left!")
+
+#This is be the director for the battle, determining when to run certain functions
+def start(object1, object2):
+    while(object1.HP > 0 and object2.HP > 0):
+        battle1(object1, object2)
+        if object2.HP > 0:
+            battle2(object1, object2)    
     
