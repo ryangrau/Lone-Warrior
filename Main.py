@@ -6,4 +6,4 @@ import Functions
 
 #Here's an example of how we'd call the functions/classes in the other files
 
-Functions.start(Classes.Wolf1, Classes.Wolf2)
+Functions.runBattle(Classes.Wolf1, Classes.Wolf2)
