@@ -5,8 +5,8 @@
 class Entity:
         name = ""
         HP = int
-        Attack = int
-        Defence = int
+        attack = int
+        defense = int
         RandInt = 7
         
         def printClass( self ):
@@ -82,27 +82,27 @@ we can do this for a "Sword, with and attack of +3 and defense of +1"
 Wolf1 = Entity()
 Wolf1.name = "Kujo"
 Wolf1.HP = 60
-Wolf1.Attack = 15
-Wolf1.Defence = 2
+Wolf1.attack = 15
+Wolf1.defense = 2
 
 Wolf2 = Entity()
 Wolf2.name = "Fluffy"
 Wolf2.HP = 80
-Wolf2.Attack = 10
-Wolf2.Defence = 1
+Wolf2.attack = 10
+Wolf2.defense = 1
 
 Hero = Entity()
 Hero.name = "Ryan"
 #Will get hero name in game like this: Hero.name = raw_input("What is your name lone explorer?")
 Hero.HP = 150
-Hero.Attack = 12
-Hero.Defence = 3
+Hero.attack = 12
+Hero.defense = 3
 
 Boss = Entity()
 Boss.name = "Bob"
 Boss.HP = 170
-Boss.Attack = 10
-Boss.Defence = 6
+Boss.attack = 10
+Boss.defense = 6
 
 #These are the 3 generic weapons I've made.  Feel free to add some.
 #It uses the "weapon" class
