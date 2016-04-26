@@ -2,6 +2,7 @@
 Imports
 '''
 from random import randint
+import Classes
 
 '''
 ***Function Creation***
@@ -54,9 +55,46 @@ def battle2(object1, object2):
         print(object1.name + " has " + str(object1.HP) + " HP left!")
 '''
 #This is be the director for the battle, determining when to run certain functions
-def start(object1, object2):
+def runBattle(object1, object2):
     while(object1.HP > 0 and object2.HP > 0):
         battle(object1, object2)
         if object2.HP > 0:
-            battle(object2, object1)    
+            battle(object2, object1) 
+
+def start(object1):
+    #Include your print statements for opening narrative
     
+    
+    getName(object1)
+
+    #blah blah blah, welcome hero, now choose your weapon
+    
+def getName(object1):
+    #blah blah blah, what is your name?
+    while(Classes.hero.name == ""):
+        Classes.hero.name = raw_input()   
+        Classes.hero.name = Classes.hero.name.title()
+
+def chooseWeapon(object1):
+    valid = False
+    #blah blah blah, what weapon you want?
+    
+    print ("1: " + Classes.sword.name + " " + Classes.sword.desc + "\n")
+    print ("2: " + Classes.spear.name + " " + Classes.spear.desc + "\n")
+    print ("3: " + Classes.axe.name + " " + Classes.axe.desc + "\n")
+
+    while(valid == False):
+        choice = raw_input()
+        choice = choice.lower()
+        if choice == 1 or choice == "one" or choice == "sword":
+            Classes.hero.equipment = Classes.sword
+            valid = True
+        elif choice == 2 or choice == "two" or choice == "spear":
+            Classes.hero.equipment = Classes.spear
+            valid = True
+        elif choice == 3 or choice == "three" or choice == "axe":
+            Classes.hero.equipment = Classes.axe
+            valid = True
+
+         
+        
