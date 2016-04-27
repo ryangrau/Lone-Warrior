@@ -15,10 +15,13 @@ def attackCalc(object1, object2):
     damage = 0
     
     #Determine attack number
-    attack = (object1.attack + randint((-object1.attack + (int(.5 * object1.attack))),
-                                       (object1.attack + (int(.5 * object1.attack)))))
+    attack = ((object1.attack + object1.weapon.attack) +            #Base number
+             randint((-object1.attack + (int(.5 * object1.attack))),#random bottom range
+             (object1.attack + (int(.5 * object1.attack)))))        #random upper range
     #Determine defense number
-    defense = (object2.defense + randint(0, (object2.defense + (int(.5 * object2.defense)))))
+    defense = ((object2.defense + object2.weapon.defense) +         #Base number  
+              randint(0,                                            #set bottom range
+              (object2.defense + (int(.5 * object2.defense)))))     #random upper range
 
     #Calculate the difference
     finalAttack = attack - defense
@@ -38,11 +41,11 @@ def attackCalc(object1, object2):
 def battle(object1, object2):
     print("Now it's " + object1.name +"'s turn!")
     #Run the attack calculator, and subject the damage from the object's HP
-    object2.HP -= attackCalc(object1, object2)
-    if object2.HP <= 0 :
+    object2.currentHP -= attackCalc(object1, object2)
+    if object2.currentHP <= 0 :
         print (object2.name + " has died...You goddamn murderer!!!")
     else:
-        print(object2.name + " has " + str(object2.HP) + " HP left!\n")
+        print(object2.name + " has " + str(object2.currentHP) + " HP left!\n")
 '''
 We'll just use battle1 and flip the arguments.
 #Object2 attacks Object1
@@ -56,9 +59,9 @@ def battle2(object1, object2):
 '''
 #This is be the director for the battle, determining when to run certain functions
 def runBattle(object1, object2):
-    while(object1.HP > 0 and object2.HP > 0):
+    while(object1.currentHP > 0 and object2.currentHP > 0):
         battle(object1, object2)
-        if object2.HP > 0:
+        if object2.currentHP > 0:
             battle(object2, object1) 
 
 def start(object1):
@@ -87,15 +90,15 @@ def chooseWeapon():
         choice = raw_input()
         choice = choice.lower()
         if choice == 1 or choice == "one" or choice == "sword":
-            Classes.hero.equipment = Classes.sword
+            Classes.hero.weapon = Classes.sword
             valid = True
         elif choice == 2 or choice == "two" or choice == "spear":
-            Classes.hero.equipment = Classes.spear
+            Classes.hero.weapon = Classes.spear
             valid = True
         elif choice == 3 or choice == "three" or choice == "axe":
-            Classes.hero.equipment = Classes.axe
+            Classes.hero.weapon = Classes.axe
             valid = True
         else:
-            print "Choice was invalid, try again..."
+            print ("\nChoice was invalid, try again...\n")
          
         

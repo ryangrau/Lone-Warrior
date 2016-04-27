@@ -7,6 +7,6 @@ import Lone_Warrior_Narr
 
 #Here's an example of how we'd call the functions/classes in the other files
 
-#Functions.runBattle(Classes.Wolf1, Classes.Wolf2)
+Functions.runBattle(Classes.wolf1, Classes.wolf2)
 
-Lone_Warrior_Narr.openNarr()
+#Lone_Warrior_Narr.openNarr()

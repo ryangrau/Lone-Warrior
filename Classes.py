@@ -3,17 +3,22 @@
 '''
 
 class entity:
-        def __init__(self, name, currentHP, maxHP, attack, defence, equipment):
+        def __init__(self, name, currentHP, maxHP, attack, defense, weapon):
                 self.name = name
-                self.currentHP = int
-                self.maxHP = int
-                self.attack = int
-                self.defence = int
-                self.equipment = equipment
+                self.currentHP = currentHP
+                self.maxHP = maxHP
+                self.attack = attack
+                self.defense = defense
+                self.weapon = weapon
 
+        def debugInfo(self):
+            print (self.name)
+            print (self.currentHP)
+            print (self.maxHP)
+            print (self.attack)
+            print (self.defense)
+            print (self.weapon)
 
-#Class for weapons, just to add a small bit of customimation,
-#Just keeping it simple for now, with only name, attack, and defense values
 class weapon:
     def __init__(self, name, attack, defense, desc):
         self.name = name
@@ -22,10 +27,10 @@ class weapon:
         self.desc = desc
 
     def debugInfo(self):
-        print ("Name is " + self.name)
-        print ("Attack value is " + str(self.attack) +
-               " & Defense value is " + str(self.defense))
-        print ("Description: " + self.desc)
+        print (self.name)
+        print (self.attack)
+        print (self.defense)
+        print (self.desc)
 
     
 #Class for creating spells.  I'll just make a simple list.
@@ -71,13 +76,6 @@ we can do this for a "Sword, with and attack of +3 and defense of +1"
 ***Object Creation***
 '''
 
-hero = entity("",100,100,18,10,"")
-wolf1 = entity("Kujo",100,100,20,10,"")
-wolf2 = entity("Fluffy",100,100,26,8,"")
-bossMagic = entity("Yomahmah",100,100,30,12,"")
-bossAxe = entity("Axesaw Duggin",100,100,38,6,"")
-bossMagicAxe = entity("Mahess",100,100,100,100,"")
-
 #These are the 3 generic weapons I've made.  Feel free to add some.
 #It uses the "weapon" class
 sword = weapon("Sword",2,1,"A modest blade featuring a bland " +
@@ -89,6 +87,16 @@ spear = weapon("Spear",1,2, "A wooden shaft with a crudely fastened blade ," +
 axe = weapon("Axe",3,0, "A masterfully designed weapon, complete with a " +
                          "damascus weaving in the steel and fluting rimming the edge. " +
                          "Shame it has little to no defensive worth.")
+none = weapon("Nothing",0,0,"")
+
+
+hero = entity("",100,100,18,10,sword)
+wolf1 = entity("Kujo",100,100,20,10,sword)
+wolf2 = entity("Fluffy",100,100,26,8,sword)
+bossMagic = entity("Yomahmah",100,100,30,12,none)
+bossAxe = entity("Axesaw Duggin",100,100,38,6,none)
+bossMagicAxe = entity("Mahess",100,100,100,100,none)
+
 
 #These are 3 spells I've made.  Again, feel free to add some.
 #1 is pure damage, the other 2 are status effect spells
