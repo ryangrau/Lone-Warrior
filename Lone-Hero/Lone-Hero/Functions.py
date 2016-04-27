@@ -37,8 +37,45 @@ def attackCalc(object1, object2):
         print (str(object1.name) + " missed their attack!")
         return damage
 
+#The third object is the spell
+def spellCalc(object1, object2, object3):
+    #Ensure damage is cleared to 0.
+    damage = 0
+    
+    #Determine attack number
+    attack = ((object1.attack + spell.attack) +                     #Base number
+             randint((-object1.attack + (int(.5 * object1.attack))),#random bottom range
+             (object1.attack + (int(.5 * object1.attack)))))        #random upper range
+    #Determine defense number
+    defense = ((object2.defense + object2.weapon.defense) +         #Base number  
+              randint(0,                                            #set bottom range
+              (object2.defense + (int(.5 * object2.defense)))))     #random upper range
+
+    #Calculate the difference
+    finalAttack = attack - defense
+
+    #Now that we have an attack value, time to assign it to a damage value
+    #If the attack is above 0, that is our damage value
+    if finalAttack > 0:
+        damage = finalAttack
+        print (str(object1.name) + " did " + str(damage) + " damage!")
+        return damage
+    #If it is below zero, we need it to be 0, otherwise we'd be healing on the opponent.
+    else:
+        print (str(object1.name) + " missed their attack!")
+        return damage
+
 #Object1 attacks Object2    
 def battle(object1, object2):
+    print("Now it's " + object1.name +"'s turn!")
+    #Run the attack calculator, and subject the damage from the object's HP
+    object2.currentHP -= attackCalc(object1, object2)
+    if object2.currentHP <= 0 :
+        print (object2.name + " has died...You goddamn murderer!!!")
+    else:
+        print(object2.name + " has " + str(object2.currentHP) + " HP left!\n")
+
+def battleSpell(object1, object2):
     print("Now it's " + object1.name +"'s turn!")
     #Run the attack calculator, and subject the damage from the object's HP
     object2.currentHP -= attackCalc(object1, object2)
@@ -94,13 +131,13 @@ def chooseWeapon():
     while(valid == False):
         choice = input()
         choice = choice.lower()
-        if choice == 1 or choice == "one" or choice == "sword":
+        if choice == "1" or choice == "one" or choice == "sword":
             Classes.hero.weapon = Classes.sword
             valid = True
-        elif choice == 2 or choice == "two" or choice == "spear":
+        elif choice == "2" or choice == "two" or choice == "spear":
             Classes.hero.weapon = Classes.spear
             valid = True
-        elif choice == 3 or choice == "three" or choice == "axe":
+        elif choice == "3" or choice == "three" or choice == "axe":
             Classes.hero.weapon = Classes.axe
             valid = True
         else:
@@ -109,7 +146,7 @@ def chooseWeapon():
 
 #function to play when the user dies
 def gameOver():
-    print ("\"I tried!!!\" you plead, but the stiff, expressionless\n \
+    print ("\n\t\"I tried!!!\" you plead, but the stiff, expressionless\n \
             figure of the Reaper doesn't change.  It continues to \n \
             drag you to a small boat on the edge of what you assume \n \
             to be the river Styx.  It's a shame that the world you're \n \
@@ -125,7 +162,29 @@ def playAgain():
         return True
     else:
         return False
+#This will be the simple menu for the user to choose.
+def heroAction(object1, object2):
+    print ("\nIt is your turn, how wil you proceed?\n")
+    print ("1 = Attack\n"
+           "2 = Spells\n")
+    #get input
+    action = input()
+    action = action.lower()
+    
+    if(action == "1" or action == "one" or action == "attack"):
+        runBattle(object1,object2)
+    
+    elif(action == "2" or action == "two" or action == "spells"):
+        print("What spell do you wish to use?\n")
+        print ("1: " + Classes.lightningBolt.name + " - Number of uses left: " + str(Classes.lightningBolt.uses) + "\n"
+               "2: " + Classes.fireBall.name + " - Number of uses left: " + str(Classes.fireBall.uses) + "\n"
+               "3: " + Classes.heal.name + " - Number of uses left: " + str(Classes.heal.uses) + "\n"
+               "4: Back to main menu\n" )
 
+
+
+
+    
 '''
 ***Riddles***
 '''
@@ -154,6 +213,7 @@ def firstRiddleHallway():
                    "\n...Kujo..."
                    "\nYou steady your weapon as Kujo, gets ready to lunge again, clearly this wolf wants nothing more than to eat your face off.")
                 valid = True
+                
             #wolf1 function?
         elif choice == "right":
                 print ("Moving forward, you become dizzy with fear, and darkness surrounds you."
@@ -166,6 +226,7 @@ def firstRiddleHallway():
                    "\nYou steady your weapon as Fluffy, gets ready to lunge again, clearly this puppy wants nothing more than to lick your face."
                    "\nRight?")
                 valid = True
+                
             #wolf2 function?
         else:
                 print ("You must pick one, there is no turning back.  Left Middle or Right?")

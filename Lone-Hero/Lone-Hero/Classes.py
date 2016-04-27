@@ -35,10 +35,11 @@ class weapon:
     
 #Class for creating spells.  I'll just make a simple list.
 class spell:
-    def __init__(self, name, attack, effect, desc):
+    def __init__(self, name, attack, effect, uses,desc):
         self.name = name
         self.attack = attack
         self.effect = effect
+        self.uses = uses
         self.desc = desc
 
     def debugInfo(self):
@@ -50,6 +51,9 @@ class spell:
         def onEffect(self.effect):
             if self.effect == True:   #Any value in effect will evalute to true, only 0 is false
         '''
+ '''
+ I decided to pull out the effect mechanic in interest of time.  Perhaps I'll implement it later just to do it.
+ I'd need to make a duration and turn count with the battles.  Not bad, but still, time.
         
 #These will be the effects for the spell class listed above.  It will need
 #to know the stat that it needs to modify.  Ex.  Blind will affect attack with -2
@@ -65,7 +69,7 @@ class effect:
         print ("The stat I modify is  " + str(self.stat) +
                " & the mod value is  " + str(self.mod))
         
-
+'''
 '''
 So I know that class looks different than the way I showed you, but it's
 actually easier to use.  Rather than initiating every value line by line,
@@ -100,14 +104,16 @@ bossMagicAxe = entity("Mahess",100,100,100,100,none)
 
 #These are 3 spells I've made.  Again, feel free to add some.
 #1 is pure damage, the other 2 are status effect spells
-lightning_bolt = spell("Lightning Bolt",30,"", "Generic Lightning Bolt description - 'Zap'")
-blind = spell("Blind",0,"atkDown", "Sometimes a best defense is crippling your opponents offense.")
-shatter = spell("Shatter",0,"defDown", "Armor and shields are useless when they're in pieces.")
-regen = spell("Regenerate",0,"mend", "Slowly mend your wounds over time.")
+lightningBolt = spell("Lightning Bolt",30,"", 1, "Generic Lightning Bolt description - 'Zap'")
+fireBall = spell("Fire Ball",30,"", 1, "Your run-of-the-mill propelled ball of pure fire.  Still fun though.")
+heal = spell("Heal",-25,"", 2 ,"Hey, it's better than waiting for the wounds to close up")
+#blind = spell("Blind",0,"atkDown", "Sometimes a best defense is crippling your opponents offense.")  Taken out
+#shatter = spell("Shatter",0,"defDown", "Armor and shields are useless when they're in pieces.")   Taken out
+#regen = spell("Regenerate",0,"mend", "Slowly mend your wounds over time.")  Taken out
 
 #These define the status effects.  Simple, one affects attack, one affects defense.
 #Eventually, when we have the entity class, we'll change "attack" and "defense" to entity.attack and entity.defense
-atkdown = effect("atkDown", "attack", -5,4)
-defDown = effect("defDown", "defense", -5,4)
-mend = effect("mend", "currentHP", +5,6)
+#atkdown = effect("atkDown", "attack", -5,4)
+#defDown = effect("defDown", "defense", -5,4)
+#mend = effect("mend", "currentHP", +5,6)
 
