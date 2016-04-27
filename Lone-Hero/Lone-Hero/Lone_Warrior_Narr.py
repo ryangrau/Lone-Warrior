@@ -32,9 +32,9 @@ def pickWeaponNarr():
            "\nLooks like forward is the only direction you can go."
            "\nAs you look ahead, you see something glimmer in the fading light."
            "\nYou walk forward, pick it up and dust it off."
-           "\nLooks like you've found..." #player picks a weapon
-    Functions.chooseWeapon() + "!!!"
-    print ("\nYou already know just how important this will be in the upcoming journey."
+           "\nLooks like you've found...") #player picks a weapon
+    Functions.chooseWeapon()
+    print ("\nYou already know just how important this will be in the upcoming journey.")
 
 
 '''

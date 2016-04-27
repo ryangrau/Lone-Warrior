@@ -110,7 +110,7 @@ def chooseWeapon():
 '''
 
 def firstRiddleHallway():
-    print "Which Hallway do you go down? Left, Middle, or Right?"
+    print ("Which Hallway do you go down? Left, Middle, or Right?")
     valid = False
     while (valid == False):
         choice = raw_input()
@@ -145,6 +145,6 @@ def firstRiddleHallway():
                 valid = True
             #wolf2 function?
         else:
-                print "You must pick one, there is no turning back.  Left Middle or Right?"
+                print ("You must pick one, there is no turning back.  Left Middle or Right?")
            
         
