@@ -9,6 +9,7 @@ import Classes
 ***Function Creation***
 '''
 
+#Kind of a pseudo game-manager.  Will reset the states of the entity and spell objects
 def setupGame():
     notDead = True
     
@@ -52,39 +53,7 @@ def attackCalc(object1, object2, object3):
         print (str(object1.name) + " missed their attack!")
         return damage
 
-'''
-#The third object is the spell
-#Functions the same as the attackCalc, but swaps the weapon attack damage
-#For the spells attack stat
-def spellCalc(object1, object2, object3):
-    #Ensure damage is cleared to 0.
-    damage = 0
-    
-    #Determine attack number
-    attack = ((object1.attack + object3.attack) +                     #Base number
-             randint((-object1.attack + (int(.5 * object1.attack))),#random bottom range
-             (object1.attack + (int(.5 * object1.attack)))))        #random upper range
-    #Determine defense number
-    defense = ((object2.defense + object2.weapon.defense) +         #Base number  
-              randint(0,                                            #set bottom range
-              (object2.defense + (int(.5 * object2.defense)))))     #random upper range
-
-    #Calculate the difference
-    finalAttack = attack - defense
-
-    #Now that we have an attack value, time to assign it to a damage value
-    #If the attack is above 0, that is our damage value
-    if finalAttack > 0:
-        damage = finalAttack
-        print (str(object1.name) + " did " + str(damage) + " damage!")
-        return damage
-    #If it is below zero, we need it to be 0, otherwise we'd be healing on the opponent.
-    else:
-        print (str(object1.name) + " missed their attack!")
-        return damage
-'''
-
-#Object1 attacks Object2    
+#Object1 attacks Object2.  Object3 is the weapon or spell used.    
 def battle(object1, object2, object3):
     print("Now it's " + object1.name +"'s turn!")
     if (object3.name == "Heal"):
@@ -98,28 +67,6 @@ def battle(object1, object2, object3):
     else:
         print(object2.name + " has " + str(object2.currentHP) + " HP left!\n")
 
-'''
-Don't need, meshed with the normal attackCalc
-def battleSpell(object1, object2):
-    print("Now it's " + object1.name +"'s turn!")
-    #Run the attack calculator, and subject the damage from the object's HP
-    object2.currentHP -= attackCalc(object1, object2)
-    if object2.currentHP <= 0 :
-        print (object2.name + " has died...You goddamn murderer!!!")
-    else:
-        print(object2.name + " has " + str(object2.currentHP) + " HP left!\n")
-'''
-'''
-We'll just use battle1 and flip the arguments.
-#Object2 attacks Object1
-def battle2(object1, object2):
-    print("Now it's " + object2.name +"'s turn!")
-    attackCalc(object1, object2)
-    if object1.HP <= 0 :
-        print (object1.name + " has died...You goddamn murderer!!!")
-    else:
-        print(object1.name + " has " + str(object1.HP) + " HP left!")
-'''
 #This is be the director for the battle, determining when to run certain functions
 def runBattle(object1, object2):
     while(object1.currentHP > 0 and object2.currentHP > 0):
@@ -130,12 +77,12 @@ def runBattle(object1, object2):
         battle(object1, object2, object3)
         if object2.currentHP > 0:
             battle(object2, object1, object3)
-#        dead = isHeroDead(object1)
+
 
             
 
 #Determine if Hero is dead, and then what path to take from there.
-
+#Possibly could move this into the entity class and make it a function of the class
 def isHeroDead(object1):
     if object1.currentHP <= 0:
         notDead = False
@@ -143,21 +90,7 @@ def isHeroDead(object1):
     else:
         notDead = True
         return notDead
-       
-    
-
-def resetHP(object1, object2 = Classes.wolf1):
-    object1.currentHP = object1.maxHP
-    object2.currentHP = object1.maxHP
-
-def start(object1):
-    #Include your print statements for opening narrative
-    
-    
-    getName(object1)
-
-    #blah blah blah, welcome hero, now choose your weapon
-    
+           
 #Get the user's name, or hero's name if they don't use their own.
 def getName():
     #blah blah blah, what is your name?
