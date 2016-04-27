@@ -32,9 +32,9 @@ def pickWeaponNarr():
            "\nLooks like forward is the only direction you can go."
            "\nAs you look ahead, you see something glimmer in the fading light."
            "\nYou walk forward, pick it up and dust it off."
-           "\nLooks like you've found..." #player picks a weapon
+           "\nLooks like you've found...") #player picks a weapon
     Functions.chooseWeapon() + "!!!"
-    print ("\nYou already know just how important this will be in the upcoming journey."
+    print ("\nYou already know just how important this will be in the upcoming journey.")
 
 
 '''
@@ -63,14 +63,15 @@ def secondRiddleNarr():
             "\nLooks like you've bested my pet"
             "\nI'd say I'm impressed...but I'm not.  I'm only more angered that I have to go on smelling such horrifying odors."
             "\nWell warrior, if you find yourself so brave, come on then...my hatred for you is only going to make me stronger."
+            \
             "\n..."
+            \
             "\nYou look down at your bloodied armor, fear has left you entirely."
             "\nThis battle has only empowered you!"
             "\nThe arrogant voice has called you out, and now, after destroying your opponent you are ready!"
             "\nYou recall all your confidence as a deadly warrior, and become enraged with bloodlust."
             "\nThis...will...NOT...be...your...last...breath!!!!"
             "\nIn full blown sprint you are only stopped by another plaquard, it's golden scripts catching your eye - the shimmering words read:")
-
 #second riddle
     print ("YOU'VE COME A LONG WAY"
             "\nTHAT'S RARE TO SEE I MUST SAY"
@@ -79,9 +80,8 @@ def secondRiddleNarr():
             "\n...WILL YOU BURN LIKE FIRE IN THE NIGHT?" #bossMagic. Has high damage output, but less HP.
             "\n...SLICE THROUGH FEAR WITH FIERCE MIGHT?" #bossAxe. Has highest damage output, but least HP.
             "\n...OR PERHAPS, THIS WHOLE TIME, YOU HAVEN'T BEEN RIGHT?") #bossMagicAxe. God-Mode.  Super high DPS, very high HP.
-
-#player is prompted once again, "How do you approach? With Rage, Precision, or Confidence?"
-#Rage is 'A', Precision is 'B', and Confidence is 'C'.
+#player is prompted once again, "How do you approach? With rage, precision, or confidence?" rage = bossMagic; precision = bossAxe; confidence = bossMagicAxe
+    Functions.secondRiddleBoss
 
 
 
