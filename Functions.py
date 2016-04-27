@@ -69,13 +69,13 @@ def start(object1):
 
     #blah blah blah, welcome hero, now choose your weapon
     
-def getName(object1):
+def getName():
     #blah blah blah, what is your name?
     while(Classes.hero.name == ""):
         Classes.hero.name = raw_input()   
         Classes.hero.name = Classes.hero.name.title()
 
-def chooseWeapon(object1):
+def chooseWeapon():
     valid = False
     #blah blah blah, what weapon you want?
     
@@ -95,6 +95,7 @@ def chooseWeapon(object1):
         elif choice == 3 or choice == "three" or choice == "axe":
             Classes.hero.equipment = Classes.axe
             valid = True
-
+        else:
+            print "Choice was invalid, try again..."
          
         
