@@ -101,7 +101,6 @@ def chooseWeapon():
         else:
             print ("\nChoice was invalid, try again...\n")
 
-
 '''
 ***Riddles***
 '''
@@ -138,5 +137,6 @@ def firstRiddleHallway(object1, object2, object3):
                "\nYou steady your weapon as Fluffy, gets ready to lunge again, clearly this puppy wants nothing more than to lick your face."
                "\nRight?"
         #wolf2 function?
-        elif "wrong input thingy"         
+        elif "wrong input thingy"    
+         
         
