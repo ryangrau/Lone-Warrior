@@ -15,7 +15,8 @@ while(again):
     Lone_Warrior_Narr.openNarr()
     endGame = Functions.firstRiddleHallway()
     #print (endGame)  Just debugging purpose
-    #if (!endGame):
+    if (endGame != True):
+        Lone_Warrior_Narr.secondRiddleNarr()
 
 
 
