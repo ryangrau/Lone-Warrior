@@ -62,7 +62,9 @@ def runBattle(object1, object2):
     while(object1.currentHP > 0 and object2.currentHP > 0):
         battle(object1, object2)
         if object2.currentHP > 0:
-            battle(object2, object1) 
+            battle(object2, object1)
+    object1.currentHP = object1.maxHP
+    object2.currentHP = object1.maxHP
 
 def start(object1):
     #Include your print statements for opening narrative
@@ -76,7 +78,7 @@ def start(object1):
 def getName():
     #blah blah blah, what is your name?
     while(Classes.hero.name == ""):
-        Classes.hero.name = raw_input()   
+        Classes.hero.name = input()   
         Classes.hero.name = Classes.hero.name.title()
 
 #Allow user to choose a weapon
@@ -90,7 +92,7 @@ def chooseWeapon():
 
 #Make sure the user enters a valid input.
     while(valid == False):
-        choice = raw_input()
+        choice = input()
         choice = choice.lower()
         if choice == 1 or choice == "one" or choice == "sword":
             Classes.hero.weapon = Classes.sword
@@ -105,6 +107,25 @@ def chooseWeapon():
             print ("\nChoice was invalid, try again...\n")
     print("You picked up the " + Classes.hero.weapon.name + "!!!")
 
+#function to play when the user dies
+def gameOver():
+    print ("\"I tried!!!\" you plead, but the stiff, expressionless\n \
+            figure of the Reaper doesn't change.  It continues to \n \
+            drag you to a small boat on the edge of what you assume \n \
+            to be the river Styx.  It's a shame that the world you're \n \
+            leaving will never know your name or your deeds.\n")
+    
+#Determine if the user wants to play again, 
+def playAgain():
+       
+    print ("Would you like to play again? (yes/no)\n")
+    yesNo = input()
+    yesNo = yesNo.lower()
+    if yesNo == "yes" or yesNo == "y":
+        return True
+    else:
+        return False
+
 '''
 ***Riddles***
 '''
@@ -113,14 +134,16 @@ def firstRiddleHallway():
     print ("Which Hallway do you go down? Left, Middle, or Right?")
     valid = False
     while (valid == False):
-        choice = raw_input()
+        choice = input()
         choice = choice.lower()
         if choice == "left":
                 print ("Moving forward, you become dizzy with fear, and all light is extinguished, but before you can even think to turn back, it's too late!"
                         "\nYou feel the ground dissapear underneath your feet as you fall to your death!"
                         "\n...Today was indeed your last breath.")
                 valid = True
-                #Do we have a 'dead' function?
+                endGame = True
+                gameOver()
+                return endGame
         elif choice == "middle":
                 print ("Moving forward, you become dizzy with fear, and darkness surrounds you."
                    "\nYou make out a small flame ahead...and...is that growling you hear?"

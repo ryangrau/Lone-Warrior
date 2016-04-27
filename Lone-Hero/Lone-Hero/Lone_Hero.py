@@ -7,6 +7,17 @@ import Lone_Warrior_Narr
 
 #Here's an example of how we'd call the functions/classes in the other files
 
-Functions.runBattle(Classes.wolf1, Classes.wolf2)
+#while playAgain = true, play it again!
+again = True
+endGame = False
+while(again):
 
+    openNarr()
+    if (firstRiddleHallway()):
+
+
+    #Functions.runBattle(Classes.wolf1, Classes.wolf2)
+
+
+    again = Functions.playAgain()
 #Lone_Warrior_Narr.openNarr()
