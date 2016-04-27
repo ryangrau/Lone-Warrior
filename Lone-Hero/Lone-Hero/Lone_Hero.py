@@ -6,7 +6,7 @@ import Lone_Warrior_Narr
 #from the files we're importing.  The goal is for more readable code.
 
 #Here's an example of how we'd call the functions/classes in the other files
-
+'''
 #while playAgain = true, play it again!
 again = True
 endGame = False
@@ -26,3 +26,7 @@ while(again):
 
     again = Functions.playAgain()
 #Lone_Warrior_Narr.openNarr()
+'''
+
+Functions.heroAction(Classes.hero, Classes.wolf1)
+
