@@ -1,12 +1,27 @@
 '''
 Imports
 '''
+
 from random import randint
 import Classes
 
 '''
 ***Function Creation***
 '''
+
+def setupGame():
+    notDead = True
+    
+    #Reset all entity HP
+    for i in Classes.entityList:
+        i.resetHP()
+    #Reset all spell uses
+    for j in Classes.spellList:
+        j.resetUses()  
+
+    return notDead
+         
+
 #The math breakdown is essentially choose a random number between
 #-attack+random attack modifier to attack + randon attack modifier
 #The function will do the math, then return an integer "damage"
@@ -72,13 +87,19 @@ def spellCalc(object1, object2, object3):
 #Object1 attacks Object2    
 def battle(object1, object2, object3):
     print("Now it's " + object1.name +"'s turn!")
+    if (object3.name == "Heal"):
+        object1.currentHP -= object3.attack 
+        print (object1.name + " healed for " + str(object3.attack) + " HP!!!")
     #Run the attack calculator, and subject the damage from the object's HP
-    object2.currentHP -= attackCalc(object1, object2, object3)
+    else:
+        object2.currentHP -= attackCalc(object1, object2, object3)
     if object2.currentHP <= 0 :
         print (object2.name + " has died...You goddamn murderer!!!")
     else:
         print(object2.name + " has " + str(object2.currentHP) + " HP left!\n")
 
+'''
+Don't need, meshed with the normal attackCalc
 def battleSpell(object1, object2):
     print("Now it's " + object1.name +"'s turn!")
     #Run the attack calculator, and subject the damage from the object's HP
@@ -87,6 +108,7 @@ def battleSpell(object1, object2):
         print (object2.name + " has died...You goddamn murderer!!!")
     else:
         print(object2.name + " has " + str(object2.currentHP) + " HP left!\n")
+'''
 '''
 We'll just use battle1 and flip the arguments.
 #Object2 attacks Object1
@@ -99,11 +121,32 @@ def battle2(object1, object2):
         print(object1.name + " has " + str(object1.HP) + " HP left!")
 '''
 #This is be the director for the battle, determining when to run certain functions
-def runBattle(object1, object2, object3):
+def runBattle(object1, object2):
     while(object1.currentHP > 0 and object2.currentHP > 0):
-        battle(object1, object2)
+       #This will determine what object3 is.
+       #Object3 is either a weapon or a spell.
+        object3 = heroAction(object1,object2)
+        
+        battle(object1, object2, object3)
         if object2.currentHP > 0:
-            battle(object2, object1)
+            battle(object2, object1, object3)
+#        dead = isHeroDead(object1)
+
+            
+
+#Determine if Hero is dead, and then what path to take from there.
+
+def isHeroDead(object1):
+    if object1.currentHP <= 0:
+        notDead = False
+        return notDead
+    else:
+        notDead = True
+        return notDead
+       
+    
+
+def resetHP(object1, object2 = Classes.wolf1):
     object1.currentHP = object1.maxHP
     object2.currentHP = object1.maxHP
 
@@ -127,9 +170,9 @@ def chooseWeapon():
     valid = False
     #blah blah blah, what weapon you want?
     
-    print ("1: " + Classes.sword.name + " " + Classes.sword.desc + "\n")
-    print ("2: " + Classes.spear.name + " " + Classes.spear.desc + "\n")
-    print ("3: " + Classes.axe.name + " " + Classes.axe.desc + "\n")
+    print ("1: " + Classes.sword.name + ": " + Classes.sword.desc + "\n")
+    print ("2: " + Classes.spear.name + ": " + Classes.spear.desc + "\n")
+    print ("3: " + Classes.axe.name + ": " + Classes.axe.desc + "\n")
 
 #Make sure the user enters a valid input.
     while(valid == False):
@@ -149,22 +192,25 @@ def chooseWeapon():
 
 #function to play when the user dies
 def gameOver():
-    print ("\n\t\"I tried!!!\" you plead, but the stiff, expressionless\n \
-            figure of the Reaper doesn't change.  It continues to \n \
-            drag you to a small boat on the edge of what you assume \n \
-            to be the river Styx.  It's a shame that the world you're \n \
-            leaving will never know your name or your deeds.\n")
-    
+    print ("\n\t\"I tried!!!\" you plead, but the stiff, expressionless\n"
+            "\tfigure of the Reaper doesn't change.  It continues to \n"
+            "\tdrag you to a small boat on the edge of what you assume \n"
+            "\tto be the river Styx.  It's a shame that the world you're \n"
+            "\tleaving will never know your name or your deeds.\n")
+    finger = """  
+                  |^|     
+               _ _| |_    
+              | | | | |_  
+              |        _> 
+              |       |   """
+    print (finger)
+
 #Determine if the user wants to play again, 
 def playAgain():
        
     print ("Would you like to play again? (yes/no)\n")
     yesNo = input().lower()
     if yesNo == "yes" or yesNo == "y":
-        #Reset Spells
-        Classes.lightningBolt.currentUse = Classes.lightningBolt.maxUse
-        Classes.fireBall.currentUse = Classes.fireBall.maxUse
-        Classes.heal.currentUse = Classes.heal.maxUse
         return True
     else:
         return False
@@ -270,7 +316,8 @@ def spellChoice(object1, object2):
 '''
 ***Riddles***
 '''
-
+#This will run through the options and properly fork the hero off into the proper
+#fight, or instant death.
 def firstRiddleHallway():
     print ("Which Hallway do you go down? Left, Middle, or Right?")
     valid = False
@@ -281,10 +328,8 @@ def firstRiddleHallway():
                 print ("Moving forward, you become dizzy with fear, and all light is extinguished, but before you can even think to turn back, it's too late!"
                         "\nYou feel the ground dissapear underneath your feet as you fall to your death!"
                         "\n...Today was indeed your last breath.")
+                Classes.hero.currentHP = 0
                 valid = True
-                endGame = True
-                gameOver()
-                return endGame
         elif choice == "middle":
                 print ("Moving forward, you become dizzy with fear, and darkness surrounds you."
                    "\nYou make out a small flame ahead...and...is that growling you hear?"
@@ -294,9 +339,7 @@ def firstRiddleHallway():
                    "\nYou dodge it's initial lunge, but not before catching it's name on it's collar"
                    "\n...Kujo..."
                    "\nYou steady your weapon as Kujo, gets ready to lunge again, clearly this wolf wants nothing more than to eat your face off.")
-                valid = True
-                
-            #wolf1 function?
+                return Classes.wolf1
         elif choice == "right":
                 print ("Moving forward, you become dizzy with fear, and darkness surrounds you."
                    "\nYou make out a small flame ahead...and...is that growling you hear?"
@@ -307,9 +350,7 @@ def firstRiddleHallway():
                    "\n...Fluffy..."
                    "\nYou steady your weapon as Fluffy, gets ready to lunge again, clearly this puppy wants nothing more than to lick your face."
                    "\nRight?")
-                valid = True
-                
-            #wolf2 function?
+                return Classes.wolf2
         else:
                 print ("You must pick one, there is no turning back.  Left Middle or Right?")
 
@@ -324,21 +365,18 @@ def secondRiddleBoss():
                 print ("Furious with your situation, you want nothing more than to destroy your opponent."
                        "\nTo rip him apart and see him wither in pain and anguish"
                        "\nand watch as he chokes on his arrogance!!!  You will not be happy until your weapon is soaked in it's blood!!!")
-                valid = True
-                #bossMagic battle function
+                return Classes.bossMagic
         elif choice == "precision":
                 print ("This is it, it's time to take on that arrogant voice!"
                        "\nYou ready your weapon and take caution."
                        "\nChances are you are about to take on a formidable foe!"
                        "\nWith a deep breath, you focus and approach slowly, ready for anything!")
-                valid = True
-                #bossAxe battle function
+                return Classes.bossAxe
         elif choice == "confidence":
                 print ("HA! What a joke!"
                        "\nThere is nothing that can stop you now!!!"
                        "\nThis shouldn't take more than a minute.")
-                valid = True
-                #bossMagicAxe function
+                return Classes.bossMagicAxe
         else:
                 print ("You must finish this fight, there is no turning back.  approach with Rage, Precision, or Confidence?")
 

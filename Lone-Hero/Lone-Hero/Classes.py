@@ -1,6 +1,8 @@
 '''
 ***Class Definitions***
 '''
+entityList=[]
+spellList=[]
 
 class entity:
         def __init__(self, name, currentHP, maxHP, attack, defense, weapon):
@@ -10,6 +12,11 @@ class entity:
                 self.attack = attack
                 self.defense = defense
                 self.weapon = weapon
+                entityList.append(self)
+
+        def __iter__(self):
+            for i in entity:
+                print(name)
 
         def debugInfo(self):
             print (self.name)
@@ -18,6 +25,13 @@ class entity:
             print (self.attack)
             print (self.defense)
             print (self.weapon)
+
+        def resetHP (self):
+            self.currentHP = self.maxHP
+
+        def loopName(self):
+            for i in self.name:
+                print (self.name)
 
 class weapon:
     def __init__(self, name, attack, defense, desc):
@@ -42,12 +56,18 @@ class spell:
         self.currentUse = currentUse
         self.maxUse = maxUse
         self.desc = desc
+        spellList.append(self)
 
     def debugInfo(self):
         print ("Name is " + self.name)
         print ("Attack value is " + str(self.attack) +
                " & My effect is " + str(self.effect))
         print ("Description: " + self.desc)
+        print ("My current Uses are " + str(self.currentUse) +
+               "and my max Uses are " + str(self.maxUse))
+
+    def resetUses(self):
+        self.currentUse = self.maxUse
         ''' 
         def onEffect(self.effect):
             if self.effect == True:   #Any value in effect will evalute to true, only 0 is false
@@ -95,13 +115,19 @@ axe = weapon("Axe",3,0, "A masterfully designed weapon, complete with a " +
 none = weapon("Nothing",0,0,"")
 
 
-hero = entity("",100,100,18,10,sword)
-wolf1 = entity("Kujo",100,100,20,10,none)
-wolf2 = entity("Fluffy",100,100,26,8,none)
+hero = entity("",50,100,18,10,sword)
+wolf1 = entity("Kujo",100,100,10,10,none)
+wolf2 = entity("Fluffy",100,100,16,8,none)
 bossMagic = entity("Yomahmah",100,100,30,12,none)
 bossAxe = entity("Axesaw Duggin",100,100,38,6,none)
 bossMagicAxe = entity("Mahess",100,100,100,100,none)
 
+'''
+#This dictionary will be used to resetHP values in Functions.setupGame()
+entityDict = {hero:[hero.currentHP,hero.maxHP],wolf1:[wolf1.currentHP,wolf1.maxHP],
+              wolf2:[wolf2.currentHP, wolf2.maxHP],bossAxe:[bossAxe.currentHP,bossAxe.maxHP],
+              bossMagic:[bossMagic.currentHP,bossMagic.maxHP],bossMagicAxe:[bossMagicAxe.currentHP,bossMagicAxe.maxHP]}
+'''
 
 #These are 3 spells I've made.  Again, feel free to add some.
 #1 is pure damage, the other 2 are status effect spells
@@ -111,6 +137,14 @@ fireBall = spell("Fire Ball",30,"", 1,1,
                  "Your run-of-the-mill propelled ball of pure fire.  Still fun though.")
 heal = spell("Heal",-25,"", 2, 2, 
              "Hey, it's better than waiting for the wounds to close up")
+
+'''
+#Dictionary used to reset spell uses in Functions.setupGame()
+spellsDict = {lightningBolt:[lightningBolt.currentUse,lightningBolt.maxUse],
+              fireBall:[fireBall.currentUse,fireBall.maxUse],
+              heal:[heal.currentUse,heal.maxUse]}
+'''
+
 #blind = spell("Blind",0,"atkDown", "Sometimes a best defense is crippling your opponents offense.")  Taken out
 #shatter = spell("Shatter",0,"defDown", "Armor and shields are useless when they're in pieces.")   Taken out
 #regen = spell("Regenerate",0,"mend", "Slowly mend your wounds over time.")  Taken out
