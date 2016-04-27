@@ -51,7 +51,7 @@ class spell:
         def onEffect(self.effect):
             if self.effect == True:   #Any value in effect will evalute to true, only 0 is false
         '''
- '''
+'''
  I decided to pull out the effect mechanic in interest of time.  Perhaps I'll implement it later just to do it.
  I'd need to make a duration and turn count with the battles.  Not bad, but still, time.
         

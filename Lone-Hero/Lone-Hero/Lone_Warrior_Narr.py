@@ -81,7 +81,7 @@ def secondRiddleNarr():
             "\n...SLICE THROUGH FEAR WITH FIERCE MIGHT?" #bossAxe. Has highest damage output, but least HP.
             "\n...OR PERHAPS, THIS WHOLE TIME, YOU HAVEN'T BEEN RIGHT?") #bossMagicAxe. God-Mode.  Super high DPS, very high HP.
 #player is prompted once again, "How do you approach? With rage, precision, or confidence?" rage = bossMagic; precision = bossAxe; confidence = bossMagicAxe
-    Functions.secondRiddleBoss
+    Functions.secondRiddleBoss()
 
 
 
@@ -119,4 +119,5 @@ def winBoss():
             "\nYou raise your weapon high, letting the blood drip off for a few seconds, before slamming it back down into the monsters face!"
             "\nYou step on and over it's putrid body, and start to walk off towards the light..."
             "\nYou take one last look back at what you've overcome and think to yourself...'looks like I'm the one still breathing after all'.")
-    return endGame = True
+    endGame = True
+    return endGame
