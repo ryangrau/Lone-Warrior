@@ -72,12 +72,14 @@ def start(object1):
 
     #blah blah blah, welcome hero, now choose your weapon
     
+#Get the user's name, or hero's name if they don't use their own.
 def getName():
     #blah blah blah, what is your name?
     while(Classes.hero.name == ""):
         Classes.hero.name = raw_input()   
         Classes.hero.name = Classes.hero.name.title()
 
+#Allow user to choose a weapon
 def chooseWeapon():
     valid = False
     #blah blah blah, what weapon you want?
@@ -86,6 +88,7 @@ def chooseWeapon():
     print ("2: " + Classes.spear.name + " " + Classes.spear.desc + "\n")
     print ("3: " + Classes.axe.name + " " + Classes.axe.desc + "\n")
 
+#Make sure the user enters a valid input.
     while(valid == False):
         choice = raw_input()
         choice = choice.lower()
@@ -100,6 +103,7 @@ def chooseWeapon():
             valid = True
         else:
             print ("\nChoice was invalid, try again...\n")
+    print("You picked up the " + Classes.hero.weapon.name + "!!!")
 
 '''
 ***Riddles***
