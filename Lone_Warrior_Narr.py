@@ -2,7 +2,7 @@ import Functions
 import Classes
 
 '''
-***
+***opening narrative
 '''
 
 def openNarr():
@@ -23,7 +23,7 @@ def openNarr():
             "\n...Move vermin! Come meet your end you pathetic filth! Come breathe your last breath!!!")
 
 '''
-***
+***picking a weapon narrative
 '''
 
 def pickWeaponNarr():
@@ -85,4 +85,14 @@ def secondRiddleNarr():
 
 
 
+'''
+***after first fight narrative
+'''
+
+def riddleHeal():
+    print ("The growling should have been warning enough."
+           "\nBut to say that battle was easy would be a lie."
+           "\nLuckily you never travel without a healing potion."
+           "\nYou take a full swig and immedietely feel it's effects."
+           "\nAfter a deep breath you feel great and your wounds are gone!")
 
