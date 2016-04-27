@@ -134,13 +134,13 @@ def chooseWeapon():
 #Make sure the user enters a valid input.
     while(valid == False):
         choice = input().lower()
-        if choice == "1" or choice == "one" or choice == "sword":
+        if choice[0] == "1" or choice == "one" or choice == "sword":
             Classes.hero.weapon = Classes.sword
             valid = True
-        elif choice == "2" or choice == "two" or choice == "spear":
+        elif choice[0] == "2" or choice == "two" or choice == "spear":
             Classes.hero.weapon = Classes.spear
             valid = True
-        elif choice == "3" or choice == "three" or choice == "axe":
+        elif choice[0] == "3" or choice == "three" or choice == "axe":
             Classes.hero.weapon = Classes.axe
             valid = True
         else:
@@ -182,13 +182,13 @@ def heroAction(object1, object2):
         #get input
     
         action = input().lower()
-        if(action == "1" or action == "one" or action == "attack"):
+        if(action[0] == "1" or action == "one" or action == "attack"):
             #print (Classes.hero.weapon.name)  Debug purpose
             return Classes.hero.weapon
         
         #the spellChoice function will try and gather the spell the user desires
         #If the user doesn't choose a spell, it will return to the heroAction function    
-        elif(action == "2" or action == "two" or action == "spells"):
+        elif(action[0] == "2" or action == "two" or action == "spells"):
             #print (object3.name) Debug purpose
             object3 = spellChoice(object1, object2)
             if object3 != True:
@@ -221,7 +221,7 @@ def spellChoice(object1, object2):
     #Series of if statments to determine spell availability and cast.
     
     #Determine if the user wants #1, and if they have the spell uses for it 
-        if(spellAction == "1" or spellAction == "one" or 
+        if(spellAction[0] == "1" or spellAction == "one" or 
            spellAction == "lightning bolt" or spellAction == "lightningbolt"):
             #Less than 0 might appear to be overkill, but just in case
             #The user figures out a way to get below 0 and cheat the system.
@@ -233,7 +233,7 @@ def spellChoice(object1, object2):
                 Classes.lightningBolt.currentUse -= 1
                 return Classes.lightningBolt
     #Determine if the user wants #2, and if they have the spell uses for it
-        elif(spellAction == "2" or spellAction == "two" or 
+        elif(spellAction[0] == "2" or spellAction == "two" or 
            spellAction == "fire ball" or spellAction == "fireball"):
             if(Classes.fireBall.currentUse <= 0):
                 print("You've exhausted your ability to cast that spell...\n"
@@ -243,7 +243,7 @@ def spellChoice(object1, object2):
                 Classes.fireBall.currentUse -= 1
                 return Classes.fireBall
     #Determine if the user wants #3 and if they have the spell uses for it    
-        elif(spellAction == "3" or spellAction == "three" or 
+        elif(spellAction[0] == "3" or spellAction == "three" or 
            spellAction == "heal"):
             if(Classes.heal.currentUse <= 0):
                 print("You've exhausted your ability to cast that spell...\n"
@@ -254,7 +254,7 @@ def spellChoice(object1, object2):
                 return Classes.heal
         
     #If they user wants to go back, just run heroAction() again
-        elif(spellAction == "4" or spellAction == "four" or 
+        elif(spellAction[0] == "4" or spellAction == "four" or 
            spellAction == "back" or spellAction == "exit"):
             return True
         else:
