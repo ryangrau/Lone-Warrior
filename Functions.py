@@ -109,38 +109,43 @@ def chooseWeapon():
 ***Riddles***
 '''
 
-def firstRiddleHallway(object1, object2, object3):
-    print "Which Hallway do you go down? Left, Middle, Right"
-    Left == "A"
-    Middle == "B"
-    Right == "C"
-    print raw_input
-        if "A"
-        print ("Moving forward, you become dizzy with fear, and all light is extinguished, but before you can even think to turn back, it's too late!"
-               "\nYou feel the ground dissapear underneath your feet as you fall to your death!"
-               "\n...Today was indeed your last breath.")
-        #Do we have a 'dead' function?
-        elif "B"
-        print ("Moving forward, you become dizzy with fear, and darkness surrounds you."
-               "\nYou make out a small flame ahead...and...is that growling you hear?"
-               "\nYou take a few more steps forward, and before you are able to think otherwise,"
-               "\nyou see the source of those growls..."
-               "\nA huge wolf!!!!!"
-               "\nYou dodge it's initial lunge, but not before catching it's name on it's collar"
-               "\n...Kujo..."
-               "\nYou steady your weapon as Kujo, gets ready to lunge again, clearly this wolf wants nothing more than to eat your face off."
-        #wolf1 function?
-        elif C
-        print ("Moving forward, you become dizzy with fear, and darkness surrounds you."
-               "\nYou make out a small flame ahead...and...is that growling you hear?"
-               "\nYou take a few more steps forward, and before you are able to think otherwise,"
-               "\nyou see the source of those growls..."
-               "\nA...tiny puppy????"
-               "\nYou dodge it's initial lunge, but not before catching it's name on it's collar"
-               "\n...Fluffy..."
-               "\nYou steady your weapon as Fluffy, gets ready to lunge again, clearly this puppy wants nothing more than to lick your face."
-               "\nRight?"
-        #wolf2 function?
-        elif "wrong input thingy"    
+def firstRiddleHallway():
+    print "Which Hallway do you go down? Left, Middle, or Right?"
+    valid = False
+    while (valid == False):
+        choice = raw_input()
+        choice = choice.lower()
+        if choice == "left":
+                print ("Moving forward, you become dizzy with fear, and all light is extinguished, but before you can even think to turn back, it's too late!"
+                        "\nYou feel the ground dissapear underneath your feet as you fall to your death!"
+                        "\n...Today was indeed your last breath.")
+                valid = True
+                #Do we have a 'dead' function?
+        elif choice == "middle":
+                print ("Moving forward, you become dizzy with fear, and darkness surrounds you."
+                   "\nYou make out a small flame ahead...and...is that growling you hear?"
+                   "\nYou take a few more steps forward, and before you are able to think otherwise,"
+                   "\nyou see the source of those growls..."
+                   "\nA huge wolf!!!!!"
+                   "\nYou dodge it's initial lunge, but not before catching it's name on it's collar"
+                   "\n...Kujo..."
+                   "\nYou steady your weapon as Kujo, gets ready to lunge again, clearly this wolf wants nothing more than to eat your face off.")
+                valid = True
+            #wolf1 function?
+        elif choice == "right":
+                print ("Moving forward, you become dizzy with fear, and darkness surrounds you."
+                   "\nYou make out a small flame ahead...and...is that growling you hear?"
+                   "\nYou take a few more steps forward, and before you are able to think otherwise,"
+                   "\nyou see the source of those growls..."
+                   "\nA...tiny puppy????"
+                   "\nYou dodge it's initial lunge, but not before catching it's name on it's collar"
+                   "\n...Fluffy..."
+                   "\nYou steady your weapon as Fluffy, gets ready to lunge again, clearly this puppy wants nothing more than to lick your face."
+                   "\nRight?")
+                valid = True
+            #wolf2 function?
+        else:
+                print "You must pick one, there is no turning back.  Left Middle or Right?"
+     
          
         
