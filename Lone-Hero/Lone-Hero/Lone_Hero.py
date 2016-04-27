@@ -10,14 +10,9 @@ import Lone_Warrior_Narr
 #while playAgain = true, play it again!
 #Global Variables are cheating, we should get rid of these.
 #I.E. get more creative in incorporating them as control statements
+#If this were C++, we could just do a "do-while" loop.
+
 again = True
-
-
-  
-
-#Classes.entity.loopName(wolf1)
-
-#Functions.setupGame()
 
 
 while(again):
@@ -67,11 +62,3 @@ while(again):
 
     again = Functions.playAgain()
     
-
-    
-    #Functions.runBattle(Classes.wolf1, Classes.wolf2)
-
-    
-#Lone_Warrior_Narr.openNarr()
-
-#Functions.heroAction(Classes.hero, Classes.wolf1) debug purpose
