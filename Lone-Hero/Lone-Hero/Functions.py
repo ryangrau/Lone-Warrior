@@ -169,5 +169,35 @@ def firstRiddleHallway():
             #wolf2 function?
         else:
                 print ("You must pick one, there is no turning back.  Left Middle or Right?")
+
+
+def secondRiddleBoss():
+    print ("How do you procede? with Rage, Precision, or Confidence?")
+    valid = False
+    while (valid == False):
+        choice = input()
+        choice = choice.lower()
+        if choice == "rage":
+                print ("Furious with your situation, you want nothing more than to destroy your opponent."
+                       "\nTo rip him apart and see him wither in pain and anguish"
+                       "\nand watch as he chokes on his arrogance!!!  You will not be happy until your weapon is soaked in it's blood!!!")
+                valid = True
+                #bossMagic battle function
+        elif choice == "precision":
+                print ("This is it, it's time to take on that arrogant voice!"
+                       "\nYou ready your weapon and take caution."
+                       "\nChances are you are about to take on a formidable foe!"
+                       "\nWith a deep breath, you focus and approach slowly, ready for anything!")
+                valid = True
+                #bossAxe battle function
+        elif choice == "confidence":
+                print ("HA! What a joke!"
+                       "\nThere is nothing that can stop you now!!!"
+                       "\nThis shouldn't take more than a minute.")
+                valid = True
+                #bossMagicAxe function
+        else:
+                print ("You must finish this fight, there is no turning back.  approach with Rage, Precision, or Confidence?")
+
            
         
