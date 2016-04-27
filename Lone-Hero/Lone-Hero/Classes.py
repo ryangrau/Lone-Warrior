@@ -35,11 +35,12 @@ class weapon:
     
 #Class for creating spells.  I'll just make a simple list.
 class spell:
-    def __init__(self, name, attack, effect, uses,desc):
+    def __init__(self, name, attack, effect, currentUse, maxUse, desc):
         self.name = name
         self.attack = attack
         self.effect = effect
-        self.uses = uses
+        self.currentUse = currentUse
+        self.maxUse = maxUse
         self.desc = desc
 
     def debugInfo(self):
@@ -95,8 +96,8 @@ none = weapon("Nothing",0,0,"")
 
 
 hero = entity("",100,100,18,10,sword)
-wolf1 = entity("Kujo",100,100,20,10,sword)
-wolf2 = entity("Fluffy",100,100,26,8,sword)
+wolf1 = entity("Kujo",100,100,20,10,none)
+wolf2 = entity("Fluffy",100,100,26,8,none)
 bossMagic = entity("Yomahmah",100,100,30,12,none)
 bossAxe = entity("Axesaw Duggin",100,100,38,6,none)
 bossMagicAxe = entity("Mahess",100,100,100,100,none)
@@ -104,9 +105,12 @@ bossMagicAxe = entity("Mahess",100,100,100,100,none)
 
 #These are 3 spells I've made.  Again, feel free to add some.
 #1 is pure damage, the other 2 are status effect spells
-lightningBolt = spell("Lightning Bolt",30,"", 1, "Generic Lightning Bolt description - 'Zap'")
-fireBall = spell("Fire Ball",30,"", 1, "Your run-of-the-mill propelled ball of pure fire.  Still fun though.")
-heal = spell("Heal",-25,"", 2 ,"Hey, it's better than waiting for the wounds to close up")
+lightningBolt = spell("Lightning Bolt",30,"", 1,1,
+                      "Generic Lightning Bolt description - 'Zap'")
+fireBall = spell("Fire Ball",30,"", 1,1,
+                 "Your run-of-the-mill propelled ball of pure fire.  Still fun though.")
+heal = spell("Heal",-25,"", 2, 2, 
+             "Hey, it's better than waiting for the wounds to close up")
 #blind = spell("Blind",0,"atkDown", "Sometimes a best defense is crippling your opponents offense.")  Taken out
 #shatter = spell("Shatter",0,"defDown", "Armor and shields are useless when they're in pieces.")   Taken out
 #regen = spell("Regenerate",0,"mend", "Slowly mend your wounds over time.")  Taken out

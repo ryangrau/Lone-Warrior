@@ -10,12 +10,12 @@ import Classes
 #The math breakdown is essentially choose a random number between
 #-attack+random attack modifier to attack + randon attack modifier
 #The function will do the math, then return an integer "damage"
-def attackCalc(object1, object2):
+def attackCalc(object1, object2, object3):
     #Ensure damage is cleared to 0.
     damage = 0
     
     #Determine attack number
-    attack = ((object1.attack + object1.weapon.attack) +            #Base number
+    attack = ((object1.attack + object3.attack) +            #Base number
              randint((-object1.attack + (int(.5 * object1.attack))),#random bottom range
              (object1.attack + (int(.5 * object1.attack)))))        #random upper range
     #Determine defense number
@@ -37,13 +37,16 @@ def attackCalc(object1, object2):
         print (str(object1.name) + " missed their attack!")
         return damage
 
+'''
 #The third object is the spell
+#Functions the same as the attackCalc, but swaps the weapon attack damage
+#For the spells attack stat
 def spellCalc(object1, object2, object3):
     #Ensure damage is cleared to 0.
     damage = 0
     
     #Determine attack number
-    attack = ((object1.attack + spell.attack) +                     #Base number
+    attack = ((object1.attack + object3.attack) +                     #Base number
              randint((-object1.attack + (int(.5 * object1.attack))),#random bottom range
              (object1.attack + (int(.5 * object1.attack)))))        #random upper range
     #Determine defense number
@@ -64,12 +67,13 @@ def spellCalc(object1, object2, object3):
     else:
         print (str(object1.name) + " missed their attack!")
         return damage
+'''
 
 #Object1 attacks Object2    
-def battle(object1, object2):
+def battle(object1, object2, object3):
     print("Now it's " + object1.name +"'s turn!")
     #Run the attack calculator, and subject the damage from the object's HP
-    object2.currentHP -= attackCalc(object1, object2)
+    object2.currentHP -= attackCalc(object1, object2, object3)
     if object2.currentHP <= 0 :
         print (object2.name + " has died...You goddamn murderer!!!")
     else:
@@ -95,7 +99,7 @@ def battle2(object1, object2):
         print(object1.name + " has " + str(object1.HP) + " HP left!")
 '''
 #This is be the director for the battle, determining when to run certain functions
-def runBattle(object1, object2):
+def runBattle(object1, object2, object3):
     while(object1.currentHP > 0 and object2.currentHP > 0):
         battle(object1, object2)
         if object2.currentHP > 0:
@@ -129,8 +133,7 @@ def chooseWeapon():
 
 #Make sure the user enters a valid input.
     while(valid == False):
-        choice = input()
-        choice = choice.lower()
+        choice = input().lower()
         if choice == "1" or choice == "one" or choice == "sword":
             Classes.hero.weapon = Classes.sword
             valid = True
@@ -156,30 +159,109 @@ def gameOver():
 def playAgain():
        
     print ("Would you like to play again? (yes/no)\n")
-    yesNo = input()
-    yesNo = yesNo.lower()
+    yesNo = input().lower()
     if yesNo == "yes" or yesNo == "y":
+        #Reset Spells
+        Classes.lightningBolt.currentUse = Classes.lightningBolt.maxUse
+        Classes.fireBall.currentUse = Classes.fireBall.maxUse
+        Classes.heal.currentUse = Classes.heal.maxUse
         return True
     else:
         return False
+
 #This will be the simple menu for the user to choose.
+#This function will return the value of object3, which is used in the attackCalc function
+#It will loop on errors or repeating menu options
 def heroAction(object1, object2):
-    print ("\nIt is your turn, how wil you proceed?\n")
-    print ("1 = Attack\n"
-           "2 = Spells\n")
-    #get input
-    action = input()
-    action = action.lower()
+    repeat = True
     
-    if(action == "1" or action == "one" or action == "attack"):
-        runBattle(object1,object2)
+    while(repeat == True):
+        print ("\nIt is your turn, how will you proceed?\n")
+        print ("1 = Attack\n"
+               "2 = Spells\n")
+        #get input
     
-    elif(action == "2" or action == "two" or action == "spells"):
-        print("What spell do you wish to use?\n")
-        print ("1: " + Classes.lightningBolt.name + " - Number of uses left: " + str(Classes.lightningBolt.uses) + "\n"
-               "2: " + Classes.fireBall.name + " - Number of uses left: " + str(Classes.fireBall.uses) + "\n"
-               "3: " + Classes.heal.name + " - Number of uses left: " + str(Classes.heal.uses) + "\n"
-               "4: Back to main menu\n" )
+        action = input().lower()
+        if(action == "1" or action == "one" or action == "attack"):
+            #print (Classes.hero.weapon.name)  Debug purpose
+            return Classes.hero.weapon
+        
+        #the spellChoice function will try and gather the spell the user desires
+        #If the user doesn't choose a spell, it will return to the heroAction function    
+        elif(action == "2" or action == "two" or action == "spells"):
+            #print (object3.name) Debug purpose
+            object3 = spellChoice(object1, object2)
+            if object3 != True:
+                return object3 
+        
+        else:
+            print("Input not valid, please try again...\n")
+        
+
+#Now, I was thinking I could have probably tied the if statment cascade into a
+#for loop, one that could handle a growing list of spells.  Given that we have 3
+#I'll probably stick with this for now, but will probably change it after we submit it.
+def spellChoice(object1, object2):
+    #Will be used to determine if user can cast spell.
+    noSpellUse = False
+    #Loop control var
+    valid = False
+    #user selection
+    spellAction = ""
+
+    print("What spell do you wish to use?\n")
+    print ("1: " + Classes.lightningBolt.name + " - Number of uses left: " + str(Classes.lightningBolt.currentUse) + "\n"
+           "2: " + Classes.fireBall.name + " - Number of uses left: " + str(Classes.fireBall.currentUse) + "\n"
+           "3: " + Classes.heal.name + " - Number of uses left: " + str(Classes.heal.currentUse) + "\n"
+           "4: Back to main menu\n" )
+    spellAction = input().lower()
+    
+    #Will never be True, but the if statements will return a value to exit the loop 
+    while(valid != True):    
+    #Series of if statments to determine spell availability and cast.
+    
+    #Determine if the user wants #1, and if they have the spell uses for it 
+        if(spellAction == "1" or spellAction == "one" or 
+           spellAction == "lightning bolt" or spellAction == "lightningbolt"):
+            #Less than 0 might appear to be overkill, but just in case
+            #The user figures out a way to get below 0 and cheat the system.
+            if(Classes.lightningBolt.currentUse <= 0):
+                print("You've exhausted your ability to cast that spell...\n"
+                      "Please choose again\n")
+                noSpellUse = True
+            else:
+                Classes.lightningBolt.currentUse -= 1
+                return Classes.lightningBolt
+    #Determine if the user wants #2, and if they have the spell uses for it
+        elif(spellAction == "2" or spellAction == "two" or 
+           spellAction == "fire ball" or spellAction == "fireball"):
+            if(Classes.fireBall.currentUse <= 0):
+                print("You've exhausted your ability to cast that spell...\n"
+                      "Please choose again\n")
+                noSpellUse = True
+            else:
+                Classes.fireBall.currentUse -= 1
+                return Classes.fireBall
+    #Determine if the user wants #3 and if they have the spell uses for it    
+        elif(spellAction == "3" or spellAction == "three" or 
+           spellAction == "heal"):
+            if(Classes.heal.currentUse <= 0):
+                print("You've exhausted your ability to cast that spell...\n"
+                      "Please choose again\n")
+                noSpellUse = True
+            else:
+                Classes.heal.currentUse -= 1
+                return Classes.heal
+        
+    #If they user wants to go back, just run heroAction() again
+        elif(spellAction == "4" or spellAction == "four" or 
+           spellAction == "back" or spellAction == "exit"):
+            return True
+        else:
+            print("You didn't input a valid command, try again...")
+
+
+
 
 
 
