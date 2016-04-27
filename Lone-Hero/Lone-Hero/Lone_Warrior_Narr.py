@@ -33,7 +33,7 @@ def pickWeaponNarr():
            "\nAs you look ahead, you see something glimmer in the fading light."
            "\nYou walk forward, pick it up and dust it off."
            "\nLooks like you've found...") #player picks a weapon
-    Functions.chooseWeapon() + "!!!"
+    Functions.chooseWeapon()
     print ("\nYou already know just how important this will be in the upcoming journey.")
 
 
@@ -56,7 +56,8 @@ def firstRiddleNarr():
             "\nANY OF WHICH CAN SEE YOU DIE" #right which is Fluffy
             "\nYou stare up over the plaquard and see there are three different hallways you can go down...but which one?")
 #player is then prompted with, "Left, Middle, or Right?" 
-    Functions.firstRiddleHallway()
+    object2 = Functions.firstRiddleHallway()
+    return object2
 
 def secondRiddleNarr():
     print ("Well, well, well.  I can smell the blood of your opponent on your grimey putrid human hands."
@@ -81,7 +82,8 @@ def secondRiddleNarr():
             "\n...SLICE THROUGH FEAR WITH FIERCE MIGHT?" #bossAxe. Has highest damage output, but least HP.
             "\n...OR PERHAPS, THIS WHOLE TIME, YOU HAVEN'T BEEN RIGHT?") #bossMagicAxe. God-Mode.  Super high DPS, very high HP.
 #player is prompted once again, "How do you approach? With rage, precision, or confidence?" rage = bossMagic; precision = bossAxe; confidence = bossMagicAxe
-    Functions.secondRiddleBoss()
+    object2 = Functions.secondRiddleBoss()
+    return object2
 
 
 
@@ -95,7 +97,7 @@ def riddleHeal():
            "\nLuckily you never travel without a healing potion."
            "\nYou take a full swig and immedietely feel it's effects."
            "\nAfter a deep breath you feel great and your wounds are gone!")
-
+    Classes.hero.resetHP()
 
 '''
 ***losing to the boss
@@ -119,5 +121,3 @@ def winBoss():
             "\nYou raise your weapon high, letting the blood drip off for a few seconds, before slamming it back down into the monsters face!"
             "\nYou step on and over it's putrid body, and start to walk off towards the light..."
             "\nYou take one last look back at what you've overcome and think to yourself...'looks like I'm the one still breathing after all'.")
-    endGame = True
-    return endGame
