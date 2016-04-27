@@ -32,9 +32,9 @@ def pickWeaponNarr():
            "\nLooks like forward is the only direction you can go."
            "\nAs you look ahead, you see something glimmer in the fading light."
            "\nYou walk forward, pick it up and dust it off."
-           "\nLooks like you've found..." #player picks a weapon
-    Functions.chooseWeapon() + "!!!"
-    print ("\nYou already know just how important this will be in the upcoming journey."
+           "\nLooks like you've found...") #player picks a weapon
+    Functions.chooseWeapon()
+    print ("\nYou already know just how important this will be in the upcoming journey.")
 
 
 '''
@@ -56,8 +56,7 @@ def firstRiddleNarr():
         "\nANY OF WHICH CAN SEE YOU DIE" #C 'C' is the easy wolf.
         "\nYou stare up over the plaquard and see there are three different hallways you can go down...but which one?")
 #player is then prompted with, "Left, Middle, or Right?" Left is 'A', Middle is 'B', and Right is 'C'.
-
-
+    Functions.firstRiddleHallway()
 
 
 def secondRiddleNarr():
