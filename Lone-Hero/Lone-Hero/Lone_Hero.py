@@ -12,8 +12,12 @@ again = True
 endGame = False
 while(again):
 
-    openNarr()
-    if (firstRiddleHallway()):
+    Lone_Warrior_Narr.openNarr()
+    endGame = Functions.firstRiddleHallway()
+    #print (endGame)  Just debugging purpose
+    #if (!endGame):
+
+
 
 
     #Functions.runBattle(Classes.wolf1, Classes.wolf2)
