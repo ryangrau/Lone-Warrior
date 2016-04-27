@@ -2,7 +2,7 @@ import Functions
 import Classes
 
 '''
-***
+***opening narrative
 '''
 
 def openNarr():
@@ -23,7 +23,7 @@ def openNarr():
             "\n...Move vermin! Come meet your end you pathetic filth! Come breathe your last breath!!!")
 
 '''
-***
+***picking a weapon narrative
 '''
 
 def pickWeaponNarr():
@@ -85,4 +85,38 @@ def secondRiddleNarr():
 
 
 
+'''
+***after first fight narrative
+'''
 
+def riddleHeal():
+    print ("The growling should have been warning enough."
+           "\nBut to say that battle was easy would be a lie."
+           "\nLuckily you never travel without a healing potion."
+           "\nYou take a full swig and immedietely feel it's effects."
+           "\nAfter a deep breath you feel great and your wounds are gone!")
+
+
+'''
+***losing to the boss
+'''
+
+def loseBoss():
+    print ("\nYou feel the searing pain spread throughout your body as you fall limp to the ground.  You struggle, plead with yourself to keep going."
+            "\nThe blood is filling up your lungs as you choke, broken bones start protruding through your hacked up body."
+            "\n...you know what this is, as much as you wish you could deny...this unholy place is where you die."
+            "\nDeath looms over you...as you breathe...your...last...breath.")
+    
+
+
+'''
+***beating the boss
+'''
+
+def winBoss():
+    print ("\nBreating heavy you look forward. There is light, beautiful shining light that beckons you!"
+            "\nYou look down at the disgusting bloodied body of your foe."
+            "\nYou raise your weapon high, letting the blood drip off for a few seconds, before slamming it back down into the monsters face!"
+            "\nYou step on and over it's putrid body, and start to walk off towards the light..."
+            "\nYou take one last look back at what you've overcome and think to yourself...'looks like I'm the one still breathing after all'.")
+    return endGame = True
