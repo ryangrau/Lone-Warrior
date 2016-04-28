@@ -2,6 +2,7 @@
 Imports
 '''
 
+from time import sleep
 from random import randint
 import Classes
 
@@ -110,16 +111,19 @@ def chooseWeapon():
 #Make sure the user enters a valid input.
     while(valid == False):
         choice = input().lower()
-        if choice[0] == "1" or choice == "one" or choice == "sword":
-            Classes.hero.weapon = Classes.sword
-            valid = True
-        elif choice[0] == "2" or choice == "two" or choice == "spear":
-            Classes.hero.weapon = Classes.spear
-            valid = True
-        elif choice[0] == "3" or choice == "three" or choice == "axe":
-            Classes.hero.weapon = Classes.axe
-            valid = True
-        else:
+        try:
+            if choice[0] == "1" or choice == "one" or choice == "sword":
+                Classes.hero.weapon = Classes.sword
+                valid = True
+            elif choice[0] == "2" or choice == "two" or choice == "spear":
+                Classes.hero.weapon = Classes.spear
+                valid = True
+            elif choice[0] == "3" or choice == "three" or choice == "axe":
+                Classes.hero.weapon = Classes.axe
+                valid = True
+            else:
+                print ("\nChoice was invalid, try again...\n")
+        except IndexError:
             print ("\nChoice was invalid, try again...\n")
     print("You picked up the " + Classes.hero.weapon.name + "!!!")
 
@@ -161,21 +165,23 @@ def heroAction(object1, object2):
         #get input
     
         action = input().lower()
-        if(action[0] == "1" or action == "one" or action == "attack"):
-            #print (Classes.hero.weapon.name)  Debug purpose
-            return Classes.hero.weapon
+        try:
+            if(action[0] == "1" or action == "one" or action == "attack"):
+                #print (Classes.hero.weapon.name)  Debug purpose
+                return Classes.hero.weapon
         
-        #the spellChoice function will try and gather the spell the user desires
-        #If the user doesn't choose a spell, it will return to the heroAction function    
-        elif(action[0] == "2" or action == "two" or action == "spells"):
-            #print (object3.name) Debug purpose
-            object3 = spellChoice(object1, object2)
-            if object3 != True:
-                return object3 
+            #the spellChoice function will try and gather the spell the user desires
+            #If the user doesn't choose a spell, it will return to the heroAction function    
+            elif(action[0] == "2" or action == "two" or action == "spells"):
+                #print (object3.name) Debug purpose
+                object3 = spellChoice(object1, object2)
+                if object3 != True:
+                    return object3 
         
-        else:
+            else:
+                print("Input not valid, please try again...\n")
+        except IndexError:
             print("Input not valid, please try again...\n")
-        
 
 #Now, I was thinking I could have probably tied the if statment cascade into a
 #for loop, one that could handle a growing list of spells.  Given that we have 3
@@ -193,52 +199,55 @@ def spellChoice(object1, object2):
            "2: " + Classes.fireBall.name + " - Number of uses left: " + str(Classes.fireBall.currentUse) + "\n"
            "3: " + Classes.heal.name + " - Number of uses left: " + str(Classes.heal.currentUse) + "\n"
            "4: Back to main menu\n" )
-    spellAction = input().lower()
+    
     
     #Will never be True, but the if statements will return a value to exit the loop 
     while(valid != True):    
-    #Series of if statments to determine spell availability and cast.
+        try:
+            spellAction = input().lower()
+        #Series of if statments to determine spell availability and cast.
     
-    #Determine if the user wants #1, and if they have the spell uses for it 
-        if(spellAction[0] == "1" or spellAction == "one" or 
-           spellAction == "lightning bolt" or spellAction == "lightningbolt"):
-            #Less than 0 might appear to be overkill, but just in case
-            #The user figures out a way to get below 0 and cheat the system.
-            if(Classes.lightningBolt.currentUse <= 0):
-                print("You've exhausted your ability to cast that spell...\n"
-                      "Please choose again\n")
-                noSpellUse = True
-            else:
-                Classes.lightningBolt.currentUse -= 1
-                return Classes.lightningBolt
-    #Determine if the user wants #2, and if they have the spell uses for it
-        elif(spellAction[0] == "2" or spellAction == "two" or 
-           spellAction == "fire ball" or spellAction == "fireball"):
-            if(Classes.fireBall.currentUse <= 0):
-                print("You've exhausted your ability to cast that spell...\n"
-                      "Please choose again\n")
-                noSpellUse = True
-            else:
-                Classes.fireBall.currentUse -= 1
-                return Classes.fireBall
-    #Determine if the user wants #3 and if they have the spell uses for it    
-        elif(spellAction[0] == "3" or spellAction == "three" or 
-           spellAction == "heal"):
-            if(Classes.heal.currentUse <= 0):
-                print("You've exhausted your ability to cast that spell...\n"
-                      "Please choose again\n")
-                noSpellUse = True
-            else:
-                Classes.heal.currentUse -= 1
-                return Classes.heal
+        #Determine if the user wants #1, and if they have the spell uses for it 
+            if(spellAction[0] == "1" or spellAction == "one" or 
+               spellAction == "lightning bolt" or spellAction == "lightningbolt"):
+                #Less than 0 might appear to be overkill, but just in case
+                #The user figures out a way to get below 0 and cheat the system.
+                if(Classes.lightningBolt.currentUse <= 0):
+                    print("You've exhausted your ability to cast that spell...\n"
+                          "Please choose again\n")
+                    noSpellUse = True
+                else:
+                    Classes.lightningBolt.currentUse -= 1
+                    return Classes.lightningBolt
+        #Determine if the user wants #2, and if they have the spell uses for it
+            elif(spellAction[0] == "2" or spellAction == "two" or 
+               spellAction == "fire ball" or spellAction == "fireball"):
+                if(Classes.fireBall.currentUse <= 0):
+                    print("You've exhausted your ability to cast that spell...\n"
+                          "Please choose again\n")
+                    noSpellUse = True
+                else:
+                    Classes.fireBall.currentUse -= 1
+                    return Classes.fireBall
+        #Determine if the user wants #3 and if they have the spell uses for it    
+            elif(spellAction[0] == "3" or spellAction == "three" or 
+               spellAction == "heal"):
+                if(Classes.heal.currentUse <= 0):
+                    print("You've exhausted your ability to cast that spell...\n"
+                          "Please choose again\n")
+                    noSpellUse = True
+                else:
+                    Classes.heal.currentUse -= 1
+                    return Classes.heal
         
-    #If they user wants to go back, just run heroAction() again
-        elif(spellAction[0] == "4" or spellAction == "four" or 
-           spellAction == "back" or spellAction == "exit"):
-            return True
-        else:
+        #If they user wants to go back, just run heroAction() again
+            elif(spellAction[0] == "4" or spellAction == "four" or 
+               spellAction == "back" or spellAction == "exit"):
+                return True
+            else:
+                print("You didn't input a valid command, try again...")
+        except IndexError:
             print("You didn't input a valid command, try again...")
-
 
 
 
@@ -257,36 +266,38 @@ def firstRiddleHallway():
     while (valid == False):
         choice = input()
         choice = choice.lower()
-        if choice == "left":
-                print ("Moving forward, you become dizzy with fear, and all light is extinguished, but before you can even think to turn back, it's too late!"
-                        "\nYou feel the ground dissapear underneath your feet as you fall to your death!"
-                        "\n...Today was indeed your last breath.")
-                Classes.hero.currentHP = 0
-                valid = True
-        elif choice == "middle":
-                print ("Moving forward, you become dizzy with fear, and darkness surrounds you."
-                   "\nYou make out a small flame ahead...and...is that growling you hear?"
-                   "\nYou take a few more steps forward, and before you are able to think otherwise,"
-                   "\nyou see the source of those growls..."
-                   "\nA huge wolf!!!!!"
-                   "\nYou dodge it's initial lunge, but not before catching it's name on it's collar"
-                   "\n...Kujo..."
-                   "\nYou steady your weapon as Kujo, gets ready to lunge again, clearly this wolf wants nothing more than to eat your face off.")
-                return Classes.wolf1
-        elif choice == "right":
-                print ("Moving forward, you become dizzy with fear, and darkness surrounds you."
-                   "\nYou make out a small flame ahead...and...is that growling you hear?"
-                   "\nYou take a few more steps forward, and before you are able to think otherwise,"
-                   "\nyou see the source of those growls..."
-                   "\nA...tiny puppy????"
-                   "\nYou dodge it's initial lunge, but not before catching it's name on it's collar"
-                   "\n...Fluffy..."
-                   "\nYou steady your weapon as Fluffy, gets ready to lunge again, clearly this puppy wants nothing more than to lick your face."
-                   "\nRight?")
-                return Classes.wolf2
-        else:
-                print ("You must pick one, there is no turning back.  Left Middle or Right?")
-
+        try:
+            if choice == "left":
+                    print ("Moving forward, you become dizzy with fear, and all light is extinguished, but before you can even think to turn back, it's too late!"
+                            "\nYou feel the ground dissapear underneath your feet as you fall to your death!"
+                            "\n...Today was indeed your last breath.")
+                    Classes.hero.currentHP = 0
+                    valid = True
+            elif choice == "middle":
+                    print ("Moving forward, you become dizzy with fear, and darkness surrounds you."
+                       "\nYou make out a small flame ahead...and...is that growling you hear?"
+                       "\nYou take a few more steps forward, and before you are able to think otherwise,"
+                       "\nyou see the source of those growls..."
+                       "\nA huge wolf!!!!!"
+                       "\nYou dodge it's initial lunge, but not before catching it's name on it's collar"
+                       "\n...Kujo..."
+                       "\nYou steady your weapon as Kujo, gets ready to lunge again, clearly this wolf wants nothing more than to eat your face off.")
+                    return Classes.wolf1
+            elif choice == "right":
+                    print ("Moving forward, you become dizzy with fear, and darkness surrounds you."
+                       "\nYou make out a small flame ahead...and...is that growling you hear?"
+                       "\nYou take a few more steps forward, and before you are able to think otherwise,"
+                       "\nyou see the source of those growls..."
+                       "\nA...tiny puppy????"
+                       "\nYou dodge it's initial lunge, but not before catching it's name on it's collar"
+                       "\n...Fluffy..."
+                       "\nYou steady your weapon as Fluffy, gets ready to lunge again, clearly this puppy wants nothing more than to lick your face."
+                       "\nRight?")
+                    return Classes.wolf2
+            else:
+                    print ("You must pick one, there is no turning back.  Left Middle or Right?")
+        except :
+             print ("You must pick one, there is no turning back.  Left Middle or Right?")
 
 def secondRiddleBoss():
     print ("How do you procede? with Rage, Precision, or Confidence?")

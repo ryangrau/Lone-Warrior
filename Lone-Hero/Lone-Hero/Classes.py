@@ -81,15 +81,12 @@ class spell:
 
 #These are the 3 generic weapons I've made.  Feel free to add some.
 #It uses the "weapon" class
-sword = weapon("Sword",2,1,"A modest blade featuring a bland " +
-                            "crossguard. The smithy clearly had the edge " +
-                            "in mind when designing this blade.")
-spear = weapon("Spear",1,2, "A wooden shaft with a crudely fastened blade ," +
-                            "atop of it.  Might work as an offensive weapon, " +
-                            "but I could make defensive use of it's range")
-axe = weapon("Axe",3,0, "A masterfully designed weapon, complete with a " +
-                         "damascus weaving in the steel and fluting rimming the edge. " +
-                         "Shame it has little to no defensive worth.")
+sword = weapon("Sword",2,1,"A modest blade featuring a bland crossguard.\n" 
+                            "The smithy clearly had the edge in mind when designing this blade.")
+spear = weapon("Spear",1,2, "A wooden shaft with a crudely fastened blade atop of it.\n"
+                            "Might work as an offensive weapon but I could make defensive use of it's range")
+axe = weapon("Axe",3,0, "A masterfully designed weapon, complete with a damascus weaving\n"
+             "in the steel. Shame it has little to no defensive worth.")
 none = weapon("Nothing",0,0,"")
 
 
@@ -102,9 +99,9 @@ bossMagicAxe = entity("Mahess",100,100,100,100,none)
 
 
 #These are 3 spells I've made.  Again, feel free to add some.
-lightningBolt = spell("Lightning Bolt",30,"", 1,1,
+lightningBolt = spell("Lightning Bolt",40,"", 1,1,
                       "Generic Lightning Bolt description - 'Zap'")
-fireBall = spell("Fire Ball",30,"", 1,1,
+fireBall = spell("Fire Ball",40,"", 1,1,
                  "Your run-of-the-mill propelled ball of pure fire.  Still fun though.")
 heal = spell("Heal",-25,"", 2, 2, 
              "Hey, it's better than waiting for the wounds to close up")
