@@ -1,38 +1,51 @@
 import Functions
 import Classes
 
+from time import sleep
+
 '''
 ***opening narrative
 '''
+SLEEP_TIMER = 8
+
 
 def openNarr():
-    print ("Well well well.  It looks like you've fallen into my dungeon!"
-            "\nYou are probably asking yourself, who's voice am I hearing right now?"
-            "\nLet me cut to the chase.  I'm the guy who is going to slaughter you!"
-            "\nWhat is your name? I want to remember what to call you as I munch on your bones!"
-#player would enter their name
-            "\n (Please enter your name)")
+    print ("Well well well.  It looks like you've fallen into my dungeon!" 
+           "\nYou are probably asking yourself, who's voice am I hearing right now?" 
+           "\nLet me cut to the chase.  I'm the guy who is going to slaughter you!" 
+           "\nWhat is your name? I want to remember what to call you as I munch on your bones!"
+           "\n (Please enter your name)")
     Functions.getName()
+
     print ("\nWell " + Classes.hero.name +
-            "\n...You see there is only one way out of this dungeon and it's through me."
-            "\n...Actually there are a few other ways out but trust me, the results are the same."
-            "\nMUAHAHAHAHA."
-            "\nI'm sure you are also curious as to how I know you're even here, or where exactly you are."
-            "\nI can smell your fear, and your vile human odor...It disgusts me."
-            "\nSo for the sake of my sense of smell, let's make this quick."
-            "\n...Move vermin! Come meet your end you pathetic filth! Come breathe your last breath!!!")
+            "\n...You see there is only one way out of this dungeon"
+            "\nand it's through me."
+            "\n...Actually there are a few other ways out but trust me,"
+            "\nthe results are the same."
+            "\nMUAHAHAHAHA.")
+    sleep(SLEEP_TIMER)
+    print ("\nI'm sure you are also curious as to how I know you're"
+           "\neven here, or where exactly you are."
+           "\nI can smell your fear, and your vile human odor..."
+           "\nIt disgusts me."
+           "\nSo for the sake of my sense of smell, let's make this quick."
+           "\n...Move vermin! Come meet your end you pathetic filth!"
+           "\nCome breathe your last breath!!!\n")
+    sleep(SLEEP_TIMER)
 
 '''
 ***picking a weapon narrative
 '''
 
 def pickWeaponNarr():
-    print ("After checking yourself for any injuries during the stumble, you gather up your gusto."
+    print ("After checking yourself for any injuries during the stumble,"
+           "\nyou gather up your gusto."
            "\nYou look behind you and it's obvious there is no climbing out of here."
-           "\nLooks like forward is the only direction you can go."
-           "\nAs you look ahead, you see something glimmer in the fading light."
+           "\nLooks like forward is the only direction you can go.\n")
+    sleep(SLEEP_TIMER)
+    print ("\nAs you look ahead, you see something glimmer in the fading light."
            "\nYou walk forward, pick it up and dust it off."
-           "\nLooks like you've found...") #player picks a weapon
+           "\nLooks like you've found...\n") #player picks a weapon
     Functions.chooseWeapon()
     print ("\nYou already know just how important this will be in the upcoming journey.")
 
@@ -48,13 +61,14 @@ def firstRiddleNarr():
            "\nBut your anger wavers. Your fear starts to overcome your confidence..."
            "\nMaybe this will be the day you breathe your last breath..."
            "\nAs your hands go numb, your body cold with fear, you come across a faded plaquerd nailed to a wooden stake in the ground."
-           "\nIt's barely legible but in the dim glow you're able to read:")
+           "\nIt's barely legible but in the dim glow you're able to read:\n")
+    sleep(SLEEP_TIMER)
 #first riddle
     print ("THERE ARE BUT THREE OPTIONS TO CHOOSE"
             "\nONE TO MAKE YOU LOSE" #left which is the pit
             "\nTWO TO MAKE YOU TRY" #middle which is Kujo
             "\nANY OF WHICH CAN SEE YOU DIE" #right which is Fluffy
-            "\nYou stare up over the plaquard and see there are three different hallways you can go down...but which one?")
+            "\nYou stare up over the plaquard and see there are three different hallways you can go down...but which one?\n")
 #player is then prompted with, "Left, Middle, or Right?" 
     object2 = Functions.firstRiddleHallway()
     return object2
