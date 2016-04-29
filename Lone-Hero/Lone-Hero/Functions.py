@@ -134,13 +134,6 @@ def gameOver():
             "\tdrag you to a small boat on the edge of what you assume \n"
             "\tto be the river Styx.  It's a shame that the world you're \n"
             "\tleaving will never know your name or your deeds.\n")
-    finger = """  
-                  |^|     
-               _ _| |_    
-              | | | | |_  
-              |        _> 
-              |       |   """
-    print (finger)
 
 #Determine if the user wants to play again, 
 def playAgain():
