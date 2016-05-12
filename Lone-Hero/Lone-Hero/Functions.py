@@ -96,7 +96,7 @@ def isHeroDead(object1):
 def getName():
     #blah blah blah, what is your name?
     while(Classes.hero.name == ""):
-        Classes.hero.name = input()   
+        Classes.hero.name = input()
         Classes.hero.name = Classes.hero.name.title()
 
 #Allow user to choose a weapon
