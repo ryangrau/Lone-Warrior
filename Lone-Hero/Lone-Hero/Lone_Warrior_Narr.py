@@ -143,7 +143,7 @@ def loseBoss():
 '''
 
 def winBoss():
-    print ("\nBreating heavy you look forward. There is light, beautiful shining light that beckons you!"
+    print ("\nBreathing heavy you look forward. There is light, beautiful shining light that beckons you!"
             "\nYou look down at the disgusting bloodied body of your foe."
             "\nYou raise your weapon high, letting the blood drip off for a few seconds, "
             "\nbefore slamming it back down into the monsters face!"
