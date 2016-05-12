@@ -126,7 +126,8 @@ def riddleHeal():
 '''
 
 def loseBoss():
-    print ("\nYou feel the searing pain spread throughout your body as you fall limp to the ground. "
+    print ("\nYou feel the searing pain spread throughout your "
+           "\nbody as you fall limp to the ground. "
            "\nYou struggle, plead with yourself to keep going."
            "\nThe blood is filling up your lungs as you choke, "
            "\nbroken bones start protruding through your hacked up body."
