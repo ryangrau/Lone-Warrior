@@ -261,7 +261,8 @@ def firstRiddleHallway():
         choice = choice.lower()
         try:
             if choice == "left":
-                    print ("Moving forward, you become dizzy with fear, and all light is extinguished, but before you can even think to turn back, it's too late!"
+                    print ("Moving forward, you become dizzy with fear, and all light is extinguished, "
+                           "\nbut before you can even think to turn back, it's too late!"
                             "\nYou feel the ground dissapear underneath your feet as you fall to your death!"
                             "\n...Today was indeed your last breath.")
                     Classes.hero.currentHP = 0
@@ -274,7 +275,8 @@ def firstRiddleHallway():
                        "\nA huge wolf!!!!!"
                        "\nYou dodge it's initial lunge, but not before catching it's name on it's collar"
                        "\n...Kujo..."
-                       "\nYou steady your weapon as Kujo, gets ready to lunge again, clearly this wolf wants nothing more than to eat your face off.")
+                       "\nYou steady your weapon as Kujo, gets ready to lunge again, "
+                       "\nclearly this wolf wants nothing more than to eat your face off.")
                     return Classes.wolf1
             elif choice == "right":
                     print ("Moving forward, you become dizzy with fear, and darkness surrounds you."
@@ -284,7 +286,8 @@ def firstRiddleHallway():
                        "\nA...tiny puppy????"
                        "\nYou dodge it's initial lunge, but not before catching it's name on it's collar"
                        "\n...Fluffy..."
-                       "\nYou steady your weapon as Fluffy, gets ready to lunge again, clearly this puppy wants nothing more than to lick your face."
+                       "\nYou steady your weapon as Fluffy, gets ready to lunge again, "
+                       "\nclearly this puppy wants nothing more than to lick your face."
                        "\nRight?")
                     return Classes.wolf2
             else:
@@ -301,7 +304,8 @@ def secondRiddleBoss():
         if choice == "rage":
                 print ("Furious with your situation, you want nothing more than to destroy your opponent."
                        "\nTo rip him apart and see him wither in pain and anguish"
-                       "\nand watch as he chokes on his arrogance!!!  You will not be happy until your weapon is soaked in it's blood!!!")
+                       "\nand watch as he chokes on his arrogance!!!  "
+                       "\nYou will not be happy until your weapon is soaked in it's blood!!!")
                 return Classes.bossMagic
         elif choice == "precision":
                 print ("This is it, it's time to take on that arrogant voice!"
@@ -315,7 +319,8 @@ def secondRiddleBoss():
                        "\nThis shouldn't take more than a minute.")
                 return Classes.bossMagicAxe
         else:
-                print ("You must finish this fight, there is no turning back.  approach with Rage, Precision, or Confidence?")
+                print ("You must finish this fight, there is no turning back. "
+                       "\nApproach with Rage, Precision, or Confidence?")
 
            
         
