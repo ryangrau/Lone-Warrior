@@ -91,10 +91,10 @@ none = weapon("Nothing",0,0,"")
 
 
 hero = entity("",50,100,18,10,none)
-wolf1 = entity("Kujo",100,100,10,10,none)
-wolf2 = entity("Fluffy",100,100,16,8,none)
-bossMagic = entity("Yomahmah",100,100,30,12,none)
-bossAxe = entity("Axesaw Duggin",100,100,38,6,none)
+wolf1 = entity("Kujo",100,100,16,10,none)
+wolf2 = entity("Fluffy",100,100,10,8,none)
+bossMagic = entity("Yomahmah",100,100,30,6,none)
+bossAxe = entity("Axesaw Duggin",100,100,38,10,none)
 bossMagicAxe = entity("Mahess",100,100,100,100,none)
 
 
