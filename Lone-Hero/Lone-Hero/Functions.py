@@ -64,7 +64,7 @@ def battle(object1, object2, object3):
     else:
         object2.currentHP -= attackCalc(object1, object2, object3)
     if object2.currentHP <= 0 :
-        print (object2.name + " has died...You goddamn murderer!!!")
+        print (object2.name + " has died...there is just so much blood!!!")
     else:
         print(object2.name + " has " + str(object2.currentHP) + " HP left!\n")
 
