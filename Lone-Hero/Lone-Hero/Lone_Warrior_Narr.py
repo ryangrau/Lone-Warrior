@@ -6,7 +6,7 @@ from time import sleep
 '''
 ***opening narrative
 '''
-SLEEP_TIMER = 8
+SLEEP_TIMER = 5
 
 
 def openNarr():
@@ -45,7 +45,8 @@ def pickWeaponNarr():
     sleep(SLEEP_TIMER)
     print ("\nAs you look ahead, you see something glimmer in the fading light."
            "\nYou walk forward, pick it up and dust it off."
-           "\nLooks like you've found...\n") #player picks a weapon
+           "\nLooks like you've found a variety of weapons..."
+           "\nWhich one do you pick?\n") #player picks a weapon
     Functions.chooseWeapon()
     print ("\nYou already know just how important this will be in the upcoming journey.")
 
@@ -60,7 +61,8 @@ def firstRiddleNarr():
            "\nYou carefully tread forward, nevertheless."
            "\nBut your anger wavers. Your fear starts to overcome your confidence..."
            "\nMaybe this will be the day you breathe your last breath..."
-           "\nAs your hands go numb, your body cold with fear, you come across a faded plaquerd nailed to a wooden stake in the ground."
+           "\nAs your hands go numb, your body cold with fear, you come across a "
+           "\nfaded plaquerd nailed to a wooden stake in the ground."
            "\nIt's barely legible but in the dim glow you're able to read:\n")
     sleep(SLEEP_TIMER)
 #first riddle
@@ -68,26 +70,33 @@ def firstRiddleNarr():
             "\nONE TO MAKE YOU LOSE" #left which is the pit
             "\nTWO TO MAKE YOU TRY" #middle which is Kujo
             "\nANY OF WHICH CAN SEE YOU DIE" #right which is Fluffy
-            "\nYou stare up over the plaquard and see there are three different hallways you can go down...but which one?\n")
+            "\nYou stare up over the plaquard and see there are three different hallways "
+            "\nyou can go down...but which one?\n")
 #player is then prompted with, "Left, Middle, or Right?" 
     object2 = Functions.firstRiddleHallway()
     return object2
 
 def secondRiddleNarr():
-    print ("Well, well, well.  I can smell the blood of your opponent on your grimey putrid human hands."
+    print ("Well, well, well.  I can smell the blood of your opponent on your" 
+            "\ngrimey putrid human hands."
             "\nLooks like you've bested my pet"
-            "\nI'd say I'm impressed...but I'm not.  I'm only more angered that I have to go on smelling such horrifying odors."
-            "\nWell warrior, if you find yourself so brave, come on then...my hatred for you is only going to make me stronger."
+            "\nI'd say I'm impressed...but I'm not.  I'm only more angered that " 
+            "\nI have to go on smelling such horrifying odors."
+            "\nWell warrior, if you find yourself so brave, come on then..."
+            "\nmy hatred for you is only going to make me stronger."
             \
             "\n..."
-            \
-            "\nYou look down at your bloodied armor, fear has left you entirely."
+            )
+    sleep(SLEEP_TIMER)
+    print("\nYou look down at your bloodied armor, fear has left you entirely."
             "\nThis battle has only empowered you!"
             "\nThe arrogant voice has called you out, and now, after destroying your opponent you are ready!"
             "\nYou recall all your confidence as a deadly warrior, and become enraged with bloodlust."
             "\nThis...will...NOT...be...your...last...breath!!!!"
-            "\nIn full blown sprint you are only stopped by another plaquard, it's golden scripts catching your eye - the shimmering words read:")
+            "\nIn full blown sprint you are only stopped by another plaquard, "
+            "\nit's golden scripts catching your eye - the shimmering words read:")
 #second riddle
+    sleep(SLEEP_TIMER)
     print ("YOU'VE COME A LONG WAY"
             "\nTHAT'S RARE TO SEE I MUST SAY"
             "\nNO CHEERING TO BE HAD YET"
@@ -118,10 +127,14 @@ def riddleHeal():
 '''
 
 def loseBoss():
-    print ("\nYou feel the searing pain spread throughout your body as you fall limp to the ground.  You struggle, plead with yourself to keep going."
-            "\nThe blood is filling up your lungs as you choke, broken bones start protruding through your hacked up body."
-            "\n...you know what this is, as much as you wish you could deny...this unholy place is where you die."
-            "\nDeath looms over you...as you breathe...your...last...breath.")
+    print ("\nYou feel the searing pain spread throughout your "
+           "\nbody as you fall limp to the ground. "
+           "\nYou struggle, plead with yourself to keep going."
+           "\nThe blood is filling up your lungs as you choke, "
+           "\nbroken bones start protruding through your hacked up body."
+           "\n...you know what this is, as much as you wish you could deny..."
+           "\nthis unholy place is where you die."
+           "\nDeath looms over you...as you breathe...your...last...breath.")
     
 
 
@@ -132,6 +145,8 @@ def loseBoss():
 def winBoss():
     print ("\nBreating heavy you look forward. There is light, beautiful shining light that beckons you!"
             "\nYou look down at the disgusting bloodied body of your foe."
-            "\nYou raise your weapon high, letting the blood drip off for a few seconds, before slamming it back down into the monsters face!"
+            "\nYou raise your weapon high, letting the blood drip off for a few seconds, "
+            "\nbefore slamming it back down into the monsters face!"
             "\nYou step on and over it's putrid body, and start to walk off towards the light..."
-            "\nYou take one last look back at what you've overcome and think to yourself...'looks like I'm the one still breathing after all'.")
+            "\nYou take one last look back at what you've overcome and think to yourself..."
+            "\n'looks like I'm the one still breathing after all'.")

@@ -36,7 +36,6 @@ while(again):
     
     #If not dead, go on to the fight!
     if(notDead):
-        print(object2.name)
         Functions.runBattle(Classes.hero, object2)
         
         #Is the hero dead now?
