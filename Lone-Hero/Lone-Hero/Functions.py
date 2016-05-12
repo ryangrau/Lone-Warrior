@@ -57,9 +57,10 @@ def attackCalc(object1, object2, object3):
 #Object1 attacks Object2.  Object3 is the weapon or spell used.    
 def battle(object1, object2, object3):
     print("Now it's " + object1.name +"'s turn!")
-    if (object3.name == "Heal"):
-        object1.currentHP -= object3.attack 
-        print (object1.name + " healed for " + str(abs(object3.attack)) + " HP!!!")
+    if(object1.name == Classes.hero.name):
+        if (object3.name == "Heal"):
+            object1.currentHP -= object3.attack 
+            print (object1.name + " healed for " + str(abs(object3.attack)) + " HP!!!")
     #Run the attack calculator, and subject the damage from the object's HP
     else:
         object2.currentHP -= attackCalc(object1, object2, object3)

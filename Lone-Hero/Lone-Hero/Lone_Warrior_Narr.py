@@ -45,7 +45,8 @@ def pickWeaponNarr():
     sleep(SLEEP_TIMER)
     print ("\nAs you look ahead, you see something glimmer in the fading light."
            "\nYou walk forward, pick it up and dust it off."
-           "\nLooks like you've found...\n") #player picks a weapon
+           "\nLooks like you've found a variety of weapons..."
+           "\nWhich one do you pick?\n") #player picks a weapon
     Functions.chooseWeapon()
     print ("\nYou already know just how important this will be in the upcoming journey.")
 
